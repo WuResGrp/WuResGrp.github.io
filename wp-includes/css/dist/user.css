@@ -1,0 +1,99 @@
+
+#user-menu-header-div,
+#user-menu-mobile-div {
+    position: relative;
+}
+
+#user-menu-header-trigger p,
+#user-menu-mobile-trigger p {
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #525252;
+    padding: 0.5rem;
+}   
+
+#user-menu-header-trigger p:hover,
+#user-menu-mobile-trigger p:hover {
+    background-color:#b8b8b8;
+    color: #ffffff;
+}   
+
+#user-menu-header-trigger .arrow,
+#user-menu-mobile-trigger .arrow {
+    display: inline-block;      /* 使 transform 生效 */
+    margin-left: 20px;
+    font-size: 14px;
+    transition: transform 0.3s ease; /* 旋转动画 */
+}
+
+#user-menu-header-trigger.dropdown-open .arrow,
+#user-menu-mobile-trigger.dropdown-open .arrow {
+    transform: rotate(180deg);
+}
+
+#user-menu-header-content, 
+#user-menu-mobile-content {
+    position: absolute;
+    top: 100%;          /* 紧贴触发元素底部 */
+    right: 0;            /* 左边缘与触发元素左边缘对齐 */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    min-width: 300px;
+    max-width: 1000px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+#user-menu-header-content p,
+#user-menu-mobile-content p {
+    color: #000000;
+}
+
+#user-menu-header-content button,
+#user-menu-mobile-content button {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background-color: #ffffff;
+    border: 0px;
+    border-radius: 0px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ff0000;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;      /* 垂直居中 */
+    justify-content: center;  /* 水平居中 */
+    gap: 8px; 
+    margin-bottom: 1.0rem;
+}
+
+
+#user-menu-header-content button:hover,
+#user-menu-mobile-content button:hover {
+  background-color: #454545;
+  border-color: #454545;
+  color: #ffffff;
+}
+
+#user-menu-header-content button:focus,
+#user-menu-mobile-content button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(179, 241, 255, 0);
+}
+
+#user-menu-header-content button:active,
+#user-menu-mobile-content button:active {
+  background-color: #a8a6a6;
+  border-color: #a8a6a6;
+  color: #ffffff;
+  transform: scale(0.98);
+}

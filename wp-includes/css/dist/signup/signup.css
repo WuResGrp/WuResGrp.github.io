@@ -1,0 +1,180 @@
+
+#sign-up-div {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  margin: 0;
+}
+
+#sign-up-card {
+  max-width: 600px;
+  width: 90%;
+  background-color: #ffffff;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+#sign-up-head {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+/* 输入组间距（比登录稍小，适应更多表单项） */
+.sign-up-input-group {
+  margin-bottom: 1.2rem;
+}
+
+.sign-up-input-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #3a3a3a;
+  letter-spacing: 0.01em;
+}
+
+/* 输入框：直角，黑白灰过渡 */
+#sign-up-card input[type="text"],
+#sign-up-card input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #1e1e1e;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+#sign-up-card input::placeholder {
+  color: #aaaaaa;
+  font-weight: 300;
+  opacity: 1;
+}
+
+#sign-up-card input[type="text"]:hover,
+#sign-up-card input[type="password"]  {
+  border-color: #8f8f8f;
+}
+
+#sign-up-card input[type="text"]:focus,
+#sign-up-card input[type="password"]  {
+  border-color: #3498db; 
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+}
+
+#sign-up-card textarea[type="text"] {
+  width: 100%;
+  resize: vertical;
+  padding: 0.8rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #1e1e1e;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+#sign-up-card textarea::placeholder {
+  color: #aaaaaa;
+  font-weight: 300;
+  opacity: 1;
+}
+
+#sign-up-card textarea[type="text"]:hover {
+  border-color: #8f8f8f;
+}
+
+#sign-up-card textarea[type="text"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+}
+
+
+/* 警告信息：默认隐藏，蓝色左侧边框 */
+#sign-up-div .input-warning {
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background-color: #f2f2f2;
+  border-left: 3px solid #3498db;
+  font-size: 0.85rem;
+  color: #2b2b2b;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* 注册按钮：与登录按钮完全一致 */
+#sign-up-btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #454545;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 1rem;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;      /* 垂直居中 */
+  justify-content: center;  /* 水平居中 */
+  gap: 8px; 
+}
+
+#sign-up-btn:hover {
+  background-color: #454545;
+  border-color: #454545;
+  color: #ffffff;
+}
+
+#sign-up-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(179, 241, 255, 0);
+}
+
+#sign-up-btn:active {
+  background-color: #a8a6a6;
+  border-color: #a8a6a6;
+  color: #ffffff;
+  transform: scale(0.98);
+}
+
+#sign-up-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 加载动画图标 */
+#loading-icon {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
