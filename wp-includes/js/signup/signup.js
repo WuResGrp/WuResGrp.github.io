@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         const country = document.getElementById('sign-up-country')?.value || '';
         const institution = document.getElementById('sign-up-institution')?.value || '';
         const groupLeader = document.getElementById('sign-up-leader')?.value || '';
-
         const purpose = document.getElementById('sign-up-purpose')?.value || '';
 
         return {
@@ -80,13 +79,19 @@ document.addEventListener('DOMContentLoaded', async function() {
         const loadingIcon = document.getElementById(`loading-icon`);
         if (loadingIcon) loadingIcon.style.display = 'block';
 
-        const redirectUrl = `https://wuresgrp.github.io/`;
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-            email: inputData.email,
-            password: inputData.password,
-            options: {
-                emailRedirectTo: redirectUrl,
-                data: {
+        // ==================== 新用户注册函数（调用 Edge Function） ====================
+        async function registerUser(inputData) {
+            const functionUrl = 'https://becwqxslretdluxtjfwb.supabase.co/functions/v1/admin';
+
+            try {
+                const response = await fetch(functionUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: "register",
+                    payload: {
+                    email: inputData.email,
+                    password: inputData.password,
                     firstName: inputData.firstName,
                     middleInitial: inputData.middleInitial,
                     lastName: inputData.lastName,
@@ -94,16 +99,49 @@ document.addEventListener('DOMContentLoaded', async function() {
                     leader: inputData.leader,
                     country: inputData.country,
                     purpose: inputData.purpose
+                    }
+                })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                // 处理重复注册错误
+                if (result.error && result.error.includes("already registered")) {
+                    alert("❌ This email is already registered. Please use another email or log in directly!");
+                } else {
+                    alert(`❌ Registration failed: ${result.error || 'Unknown error'}`);
                 }
+                return null;
+                }
+
+                alert("✅ Registration successful! Please wait for admin approval before receiving the verification email.");
+                console.log("Registration response:", result);
+                return result.user;
+
+            } catch (err) {
+                console.error(err);
+                alert("Network error, please try again later.");
+                return null;
             }
+        }
+
+        const registeredUser = await registerUser({
+            email: inputData.email,
+            password: inputData.password,
+            firstName: inputData.firstName,
+            middleInitial: inputData.middleInitial,
+            lastName: inputData.lastName,
+            institution: inputData.institution,
+            leader: inputData.leader,
+            country: inputData.country,
+            purpose: inputData.purpose
         });
 
-        if (signUpError) {
-            alert(`Failed to sign up: ${signUpError.message}`);
+        if (!registeredUser) {
             if (loadingIcon) loadingIcon.style.display = 'none';
             return;
         } else {
-            alert(`The verification link has been sent to ${inputData.userEmail}, please check. `);
             window.location.href = 'https://wuresgrp.github.io/login';
         }
         

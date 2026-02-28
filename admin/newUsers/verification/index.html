@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<header><meta charset="UTF-8">
+<link rel="stylesheet" href="../../../wp-includes/css/dist/admin/newUsers/verification/verification.css"> <!-- user.css -->
+</header>
+<body>
+    <div class="container">
+        <!-- 左侧表格区域 -->
+        <div class="table-wrapper">
+            <div class="header-with-filter">
+                <h1>用户控制台
+                    <span id="loading-icon" class="spinner"></span>
+                </h1>
+                <select id="filterSelect">
+                    <option value="all">所有用户</option>
+                    <option value="unreviewed_unverified">未审核</option>
+                    <option value="reviewed_unverified">已审核，用户未验证</option>
+                    <option value="reviewed_verified">已审核，用户已验证</option>
+                </select>
+            </div>
+            <div id="users-list">
+                <div id="user-list-header"></div>
+                <div id="user-list-content"></div>
+            </div>
+        </div>
+        <!-- 右侧详情面板（初始隐藏） -->
+        <div id="user-detail-panel" class="user-detail-panel" style="display: none;">
+            <div class="panel-header">
+                <h3>用户详情</h3>
+                <button id="close-panel" class="close-btn">&times;</button>
+            </div>
+            <div class="panel-content" id="panel-content">
+                <!-- 动态填充内容 -->
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="../../../wp-includes/js/admin/newUsers/verification/verification.js"></script> <!-- verification.js -->
+</html>
