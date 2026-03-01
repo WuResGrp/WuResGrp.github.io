@@ -16,6 +16,63 @@ body {
   margin: 0 auto;
 }
 
+/* 登录页面样式 */
+.login-panel {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #f4f6f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.login-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 380px;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 14px;
+  background: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-card button:hover {
+  background: #0052cc;
+}
+
+.error-msg {
+  color: #ff3b30;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+
 /* 容器：使用 Flex 实现左右并排 */
 .container {
   width: 100%;
