@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             await supabase.auth.signOut({ scope: 'local' });
 		}
 
-        window.location.href = 'https://wuresgrp.github.io/';
+        window.location.href = 'https://wuresgrp.github.io/login/';
 
     });
 

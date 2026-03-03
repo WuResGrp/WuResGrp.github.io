@@ -41,22 +41,56 @@ document.addEventListener('DOMContentLoaded', async function() {
         const loadingIcon = document.getElementById(`loading-icon`);
         if (loadingIcon) loadingIcon.style.display = 'block';
 
-        const redirectUrl = `https://wuresgrp.github.io/reset2`;
-		const { resetError } = await supabase.auth.resetPasswordForEmail(inputData.userEmail, {
-            redirectTo: redirectUrl
-        });
+        const functionUrl = 'https://becwqxslretdluxtjfwb.supabase.co/functions/v1/admin';
 
-        if (resetError) {
-            alert(`Failed to sent the password reset link: ${resetError}`);
-            return;
-        } else {
-            alert(`If that email is registered, we'll send a password reset link. Please check your email ${data.userEmail}.`);
+        try {
+            const response = await fetch(functionUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: "check_if_existed",
+                payload: {
+                email: inputData.userEmail
+                }
+            })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                if (result.error && result.error.includes("not registered")) {
+                    alert("❌ This email is not registered!");
+                } else {
+                    alert(`❌ Failed: ${result.error || 'Unknown error'}`);
+                }
+                if (loadingIcon) loadingIcon.style.display = 'none';
+                return null;
+            }
+
+            const redirectUrl = `https://wuresgrp.github.io/reset2`;
+            const { resetError } = await supabase.auth.resetPasswordForEmail(inputData.userEmail, {
+                redirectTo: redirectUrl
+            });
+
+            if (resetError) {
+                alert(`Failed to sent the password reset link: ${resetError}`);
+                return;
+            } 
+            
+            alert("✅ Successful! Please wait for admin approval before receiving the reset email.");
+            console.log("Registration response:", result);
+            if (loadingIcon) loadingIcon.style.display = 'none';
+            return result;
+
+        } catch (err) {
+            console.error(err);
+            alert("Network error, please try again later.");
+            if (loadingIcon) loadingIcon.style.display = 'none';
+            return null;
         }
 
-        if (loadingIcon) loadingIcon.style.display = 'none';
+        
     });
-
-
 
 
 });

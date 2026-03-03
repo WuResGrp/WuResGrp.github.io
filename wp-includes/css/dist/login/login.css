@@ -154,6 +154,29 @@
     opacity: 0.6;
 }
 
+/* 注册链接 */
+#sign-up-label {
+  display: block;          /* 让 label 占满整行 */
+  text-align: center;      /* 使其内部内联内容居中 */
+  margin-left: 0;
+  margin-top: 1rem;
+}
+
+#sign-up-btn {
+  color: #6f6f6f;                  
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  white-space: nowrap;             /* 防止换行 */           
+}
+
+#sign-up-btn:hover {
+  color: #3498db;
+  text-decoration: underline;
+}
+
+
 #loading-icon {
     display: none;
     width: 16px;
