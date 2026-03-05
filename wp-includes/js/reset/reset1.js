@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 			warningLabel.style.display = 'none';
 		}
 
-	    if (!allFilled) return;
-
+	    if (!allFilled) {
+            resetBtn.removeAttribute("disabled");
+            return;
+        }
         /* 加载图标 */
         const loadingIcon = document.getElementById(`loading-icon`);
         if (loadingIcon) loadingIcon.style.display = 'block';
