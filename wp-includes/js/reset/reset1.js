@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return;
             } 
             
-            alert("✅ Successful! Please wait for admin approval before receiving the reset email.");
+            alert("✅ Successful! Please check the reset email.");
             console.log("Registration response:", result);
             if (loadingIcon) loadingIcon.style.display = 'none';
             resetBtn.removeAttribute("disabled");

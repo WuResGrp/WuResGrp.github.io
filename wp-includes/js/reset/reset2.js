@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     resetBtn.addEventListener('click', async () => {
 
+        resetBtn.setAttribute("disabled", "");
         allFilled = true;
 
         const inputData = getUpdateData();
@@ -55,7 +56,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (warningLabel) warningLabel.style.display = 'none';
         }
 
-        if (!allFilled) return;
+        if (!allFilled) {
+            resetBtn.removeAttribute("disabled");
+            return;
+        }
 
         /* 加载图标 */
         const loadingIcon = document.getElementById(`loading-icon`);
