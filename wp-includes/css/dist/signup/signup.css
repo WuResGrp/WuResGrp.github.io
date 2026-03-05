@@ -65,12 +65,12 @@
 }
 
 #sign-up-card input[type="text"]:hover,
-#sign-up-card input[type="password"]  {
+#sign-up-card input[type="password"]:hover  {
   border-color: #8f8f8f;
 }
 
 #sign-up-card input[type="text"]:focus,
-#sign-up-card input[type="password"]  {
+#sign-up-card input[type="password"]:focus  {
   border-color: #3498db; 
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
 }
