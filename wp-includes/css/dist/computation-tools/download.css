@@ -1,0 +1,194 @@
+
+/* 全屏遮罩 + 居中布局 */
+#download-masking{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgb(0 0 0 / 35%);
+
+    /* 居中白色矩形 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 180ms ease;
+}
+
+/* 打开时显示 */
+#download-masking.is-open{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+}
+
+/* 中间白色矩形容器 */
+#download-modal{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* 横向居中 */
+    gap: 20px;             /* 组件之间的统一间距 */
+    padding: 28px 32px;    /* 与边界空出距离 */
+    background: #fff;
+    border-radius: 5px;
+    width: min(720px, 92vw);
+    min-height: 360px;
+    max-height: 80vh;
+    overflow: auto;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+    --row-w: min(560px, 100%);
+
+    transform: translateY(16px) scale(0.98);
+    opacity: 0;
+
+    transition: transform 180ms ease, opacity 180ms ease;
+    will-change: transform, opacity;
+}
+
+#download-masking.is-open #download-modal{
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* 减少动态效果：按系统偏好关闭/弱化动画 */
+@media (prefers-reduced-motion: reduce){
+    #download-masking,
+    #download-modal{
+        transition: none;
+    }
+}
+
+#download-user-name{
+    margin: 0;
+    text-align: center;
+}
+
+#user-info-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: var(--row-w);
+}
+
+#user-info-div button {
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ff5252;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ff5252;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    line-height: 1.2;
+}
+
+/* 悬停：背景和边框加深，文字变白（增强对比） */
+#user-info-div button:hover {
+    background-color: #ff5252;       
+    border-color: #ff5252;
+    color: #ffffff;                  
+}
+
+/* 聚焦（键盘导航/点击时）：更深的背景，并添加深色光晕 */
+#user-info-div button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(179, 241, 255, 0); /* 半透明深色外发光 */
+}
+
+/* 激活（鼠标按下时）：最深的黑色，模拟按下 */
+#user-info-div button:active {
+    background-color: #ff6e6e;
+    border-color: #ff6e6e;
+    color: #ffffff;
+    transform: scale(0.98);          /* 轻微内缩 */
+}
+
+#download-options{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.download-group{
+    width: var(--row-w);
+    display: flex;
+    align-items: center;              /* 上下对齐 */ 
+    justify-content: space-between;   /* 两端对齐 */
+    gap: 24px;                        /* 固定间距兜底 */
+}
+
+.download-group label{
+    flex: 1 1 auto;   /* 占剩余空间，让按钮贴右侧 */
+    min-width: 0;
+}
+
+.download-group button {
+    padding: 0.85rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #454545;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 0;
+    line-height: 1.2;
+    flex: 0 0 auto;
+}
+
+/* 悬停：背景和边框加深，文字变白（增强对比） */
+.download-group button:hover {
+    background-color: #3498db;       
+    border-color: #3498db;
+    color: #ffffff;                  
+}
+
+/* 聚焦（键盘导航/点击时）：更深的背景，并添加深色光晕 */
+.download-group button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(179, 241, 255, 0); /* 半透明深色外发光 */
+}
+
+/* 激活（鼠标按下时）：最深的黑色，模拟按下 */
+.download-group button:active {
+    background-color: #87cfff;
+    border-color: #87cfff;
+    color: #ffffff;
+    transform: scale(0.98);          /* 轻微内缩 */
+}
+
+.download-group label {
+    font-size: 1.25rem;
+}
+
+.spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;      
+    border-top: 2px solid #3498db;   
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+

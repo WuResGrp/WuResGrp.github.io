@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const logInBtn = document.getElementById('log-in-btn');
 
     logInBtn.addEventListener('click', async () => {
-        
+        logInBtn.setAttribute("disabled", "");
 		allFilled = true;
 
 		const inputData = getSignInData();
@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 			warningLabel.style.display = 'none';
 		}
 
-		if (!allFilled) return;
-
+		if (!allFilled) {
+			logInBtn.removeAttribute("disabled");
+			return;
+		}
 		/* 加载图标 */
         const loadingIcon = document.getElementById(`loading-icon`);
         if (loadingIcon) loadingIcon.style.display = 'block';
@@ -68,6 +70,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		if (signInError) {
 			alert(`Failed to sign in: ${signInError.message}`);
 			if (loadingIcon) loadingIcon.style.display = 'none';
+			logInBtn.removeAttribute("disabled");
 			return;
 		} else {
 			const names = [
@@ -77,9 +80,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 			].filter(Boolean); // 过滤掉空字符串、null、undefined 等假值
 			alert(`Welcome, ${names.join(' ')}`);
 		}
-
-		window.location.href = 'https://wuresgrp.github.io/';
-
+		
+		const next = sessionStorage.getItem("post_login_next");
+		sessionStorage.removeItem("post_login_next");
+		window.location.replace(next && next.trim() ? next : 'https://wuresgrp.github.io/computation-tools/');
+		
     });
 
 	const forgotBtn = document.getElementById('forgot-pwd-btn');

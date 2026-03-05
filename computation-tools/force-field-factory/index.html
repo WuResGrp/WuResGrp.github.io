@@ -76,6 +76,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel="apple-touch-icon" href="https://wuresgrp.github.io/wp-content/uploads/2026/02/cropped-icon_1x1-180x180.png">
 <meta name="msapplication-TileImage" content="https://wuresgrp.github.io/wp-content/uploads/2026/02/cropped-icon_1x1-270x270.png">
 <link rel="stylesheet" href="../../wp-includes/css/dist/computation-tools/force-field-factory/force-field-factory.css"> <!-- force-field-factory.css -->
+<link rel="stylesheet" href="../../wp-includes/css/dist/computation-tools/download.css"> <!-- download.css -->
 
 		<style id="wp-custom-css">
 			/* 隐藏面包屑中的首页链接 */
@@ -234,12 +235,23 @@ svg title {
 <p>&lt;FFF picture&gt;</p>
 
 
-
 <p>&lt;FFF introduction&gt;</p>
 
 
-
 <p id="FFF-download">Download</p>
+
+<div id="download-masking">
+	<div id="download-modal">
+		<h3 id="download-user-name"></h3>
+		<div id="download-options"></div>
+		<div id="user-info-div">	
+			<button id="log-out-btn">Log Out
+				<span id="log-out-loading-icon" class="spinner"></span>
+			</button>
+		</div>
+  	</div>
+</div>
+
 </div><!-- .entry-content -->
 	</div>
 </article><!-- #post-547 -->
@@ -329,7 +341,6 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 //# sourceURL=https://wuresgrp.github.io/wp-includes/js/wp-emoji-loader.min.js
 </script>
 <script type="module" src="../../wp-includes/js/computation-tools/force-field-factory/force-field-factory.js"></script> <!-- force-field-factory.js -->
-
 
 	<div id="search-drawer" aria-modal="true" role="dialog" aria-label="Search" class="popup-drawer popup-drawer-layout-fullwidth" data-drawer-target-string="#search-drawer">
 		<div class="drawer-overlay" data-drawer-target-string="#search-drawer"></div>

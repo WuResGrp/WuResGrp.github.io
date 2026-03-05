@@ -15,6 +15,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
 	};
 
+    const logInBtn = document.getElementById('log-in-btn');
+
+    logInBtn.addEventListener('click', async () => {
+        window.location.href = 'https://wuresgrp.github.io/login/';
+    });
+
     const resetBtn = document.getElementById('reset-btn');
 
     /* 检查输入框是否存在内容，没有则显示警告 */
@@ -22,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     resetBtn.addEventListener('click', async () => {
         
+        resetBtn.setAttribute("disabled", "");
         allFilled = true;
 
         const inputData = getResetData();
@@ -64,6 +71,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     alert(`❌ Failed: ${result.error || 'Unknown error'}`);
                 }
                 if (loadingIcon) loadingIcon.style.display = 'none';
+                resetBtn.removeAttribute("disabled");
                 return null;
             }
 
@@ -73,19 +81,22 @@ document.addEventListener('DOMContentLoaded', async function() {
             });
 
             if (resetError) {
-                alert(`Failed to sent the password reset link: ${resetError}`);
+                alert(`❌ Failed to sent the password reset link: ${resetError}`);
+                resetBtn.removeAttribute("disabled");
                 return;
             } 
             
             alert("✅ Successful! Please wait for admin approval before receiving the reset email.");
             console.log("Registration response:", result);
             if (loadingIcon) loadingIcon.style.display = 'none';
+            resetBtn.removeAttribute("disabled");
             return result;
 
         } catch (err) {
             console.error(err);
-            alert("Network error, please try again later.");
+            alert("❌ Network error, please try again later.");
             if (loadingIcon) loadingIcon.style.display = 'none';
+            resetBtn.removeAttribute("disabled");
             return null;
         }
 

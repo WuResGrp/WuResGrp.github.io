@@ -163,12 +163,12 @@
 }
 
 #sign-up-btn {
-  color: #6f6f6f;                  
+  color: #6f6f6f;
   text-decoration: none;
   font-size: 1.1rem;
   cursor: pointer;
   transition: color 0.15s ease;
-  white-space: nowrap;             /* 防止换行 */           
+  white-space: nowrap;             /* 防止换行 */
 }
 
 #sign-up-btn:hover {
@@ -176,8 +176,7 @@
   text-decoration: underline;
 }
 
-
-#loading-icon {
+.spinner {
     display: none;
     width: 16px;
     height: 16px;

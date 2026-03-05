@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     let allFilled = true;
 
     registerBtn.addEventListener('click', async () => {
-        
+
+        registerBtn.setAttribute("disabled", "");
         allFilled = true;
 
         const requiredFieldIds = [
@@ -73,8 +74,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             if (warningLabel) warningLabel.style.display = 'none';
         }
 
-        if (!allFilled) return;
-
+        if (!allFilled) {
+            registerBtn.removeAttribute("disabled");
+            return;
+        }
         /* 加载图标 */
         const loadingIcon = document.getElementById(`loading-icon`);
         if (loadingIcon) loadingIcon.style.display = 'block';
@@ -106,13 +109,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const result = await response.json();
 
                 if (!response.ok) {
-                // 处理重复注册错误
-                if (result.error && result.error.includes("already registered")) {
-                    alert("❌ This email is already registered. Please use another email or log in directly!");
-                } else {
-                    alert(`❌ Registration failed: ${result.error || 'Unknown error'}`);
-                }
-                return null;
+                    // 处理重复注册错误
+                    if (result.error && result.error.includes("already registered")) {
+                        alert("❌ This email is already registered. Please use another email or log in directly!");
+                    } else {
+                        alert(`❌ Registration failed: ${result.error || 'Unknown error'}`);
+                    }
+                    registerBtn.removeAttribute("disabled");
+                    return null;
                 }
 
                 alert("✅ Registration successful! Please wait for admin approval before receiving the verification email.");
@@ -122,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             } catch (err) {
                 console.error(err);
                 alert("Network error, please try again later.");
+                registerBtn.removeAttribute("disabled");
                 return null;
             }
         }
@@ -140,9 +145,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         if (!registeredUser) {
             if (loadingIcon) loadingIcon.style.display = 'none';
+            registerBtn.removeAttribute("disabled");
             return;
         } else {
-            window.location.href = 'https://wuresgrp.github.io/login';
+            window.location.href = 'https://wuresgrp.github.io/login/';
         }
         
     });

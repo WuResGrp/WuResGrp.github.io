@@ -1,4 +1,9 @@
 #FFF-download {
+    display: block;
+    width: max-content;
     cursor: pointer;
 }
 
+#FFF-download:hover{
+    color: #3498db;
+}
