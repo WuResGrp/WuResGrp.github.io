@@ -1,0 +1,148 @@
+/* 外层轮播框 */
+.home-slider{
+    position: relative;
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+/* 横向滚动容器 */
+.home-imgbar{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE/Edge old */
+}
+
+.home-imgbar::-webkit-scrollbar{
+    display: none;                 /* Chrome/Safari */
+}
+
+/* 每张卡片占满一屏 */
+.home-img-card{
+    flex: 0 0 100%;
+    width: 100%;
+    height: clamp(260px, 52vw, 680px);
+    position: relative;
+    scroll-snap-align: start;
+    overflow: hidden;
+    isolation: isolate;
+    background: #f3f3f3;
+}
+
+/* 模糊背景层：由 JS 给 --bg-url 赋值 */
+.home-img-card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.12);
+    filter: blur(26px) brightness(0.82);
+    z-index: 0;
+}
+
+/* 再叠一层轻微遮罩，避免背景太乱 */
+.home-img-card::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right,
+        rgba(255,255,255,0.14) 0%,
+        rgba(255,255,255,0.04) 16%,
+        rgba(255,255,255,0) 30%,
+        rgba(255,255,255,0) 70%,
+        rgba(255,255,255,0.04) 84%,
+        rgba(255,255,255,0.14) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 前景主图：等比缩放，不变形 */
+.home-img{
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* 左右切换按钮 */
+.home-slider-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.5);
+    color: #222222be;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 6px 24px rgba(103, 103, 103, 0.12);
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.home-slider-btn:hover{
+    background: #ffffff;
+    color: #222222be;
+}
+
+.home-slider-btn:active{
+    transform: translateY(-50%) scale(0.96);
+}
+
+.home-slider-btn:focus{
+    background: rgba(255,255,255,0.5);
+    color: #222222be;
+}
+
+.home-slider-btn:focus:hover{
+    background: #ffffff;
+    color: #222222be;
+}
+
+.home-slider-btn--prev{
+    left: 14px;
+}
+
+.home-slider-btn--next{
+    right: 14px;
+}
+
+/* 手机端隐藏按钮，保留触滑 */
+@media (max-width: 768px){
+    .home-slider-btn{
+        display: none;
+    }
+
+    .home-img-card{
+        height: clamp(220px, 62vw, 460px);
+    }
+}
+

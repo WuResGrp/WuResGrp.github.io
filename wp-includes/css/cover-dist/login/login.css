@@ -32,27 +32,26 @@
   margin-bottom: 1.5rem;
 }
 
-.log-in-input-group label {
+.log-in-label{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 0.4rem;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #3a3a3a;                 
-  letter-spacing: 0.01em;
+  gap: 0.5rem;
+  flex-wrap: nowrap;          
 }
 
-/* 忘记密码链接 */
-#forgot-pwd-btn {
-  color: #6f6f6f;                  
+/* 右侧链接：空间不足 -> … */
+#forgot-pwd-btn{
+  color: #6f6f6f;  
+  margin-left: auto;          
+
+  min-width: 0;               
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;    
   text-decoration: none;
-  font-size: 1.0rem;
-  cursor: pointer;
-  transition: color 0.15s ease;
-  white-space: nowrap;             /* 防止换行 */
-  margin-left: 0.5rem;             /* 与 Password 保持间距 */
+  display: block;             
+  text-align: right;
 }
 
 #forgot-pwd-btn:hover {

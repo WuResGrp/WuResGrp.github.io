@@ -1,0 +1,37 @@
+
+
+
+ul#primary-menu{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+ul#primary-menu > li.menu-item > a{
+    min-width: max-content !important;
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+ul#primary-menu > li.menu-item > a:hover{
+  text-shadow: 1px 0 0 currentColor !important;
+  color:#000 !important;
+}
+
+ul#primary-menu > li.menu-item.current-menu-item > a{
+  text-shadow: 1px 0 0 currentColor !important;
+  color:#000 !important;
+}
+
+ul#primary-menu > li.menu-item.current-menu-parent > a{
+  text-shadow: 1px 0 0 currentColor !important;
+  color:#000 !important;
+}
+
+ul.sub-menu > li.menu-item > a:hover{
+  text-shadow: 1px 0 0 currentColor !important;
+  color:#ffffff !important;
+}
+
+ul.sub-menu > li.menu-item.current-menu-item > a{
+  text-shadow: 1px 0 0 currentColor !important;
+  color:#ffffff !important;
+}
