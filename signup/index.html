@@ -205,6 +205,87 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	<div class="entry-content-wrap">
 		
 <div class="entry-content single-content">
+		<!-- 注册界面组件 -->
+		<div id="sign-up-div">
+			<div id="sign-up-card">
+				<h3 id="sign-up-head">Create your account</h3>
+				<div class="sign-up-input-group">
+					<label>Email address*</label>
+					<input type="text" id="sign-up-email" autocomplete="off">
+					<label id="sign-up-email-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Password*</label>
+					<input type="password" id="sign-up-password" placeholder="••••••••">
+					<label id="sign-up-password-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Confirm password*</label>
+					<input type="password" id="sign-up-confirm-password" placeholder="••••••••">
+					<label id="sign-up-confirm-password-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+					<label id="sign-up-confirm-password-notmatch" class="input-warning">
+						Passwords do not match.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>First name*</label>
+					<input type="text" id="sign-up-first-name" autocomplete="off">
+					<label id="sign-up-first-name-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Middle initial</label>
+					<input type="text" id="sign-up-middle-initial" autocomplete="off">
+					<label id="sign-up-middle-initial-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Last name*</label>
+					<input type="text" id="sign-up-last-name" autocomplete="off">
+					<label id="sign-up-last-name-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Country/Region*</label>
+					<input type="text" id="sign-up-country" autocomplete="off">
+					<label id="sign-up-country-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>University/Institution*</label>
+					<input type="text" id="sign-up-institution" autocomplete="off">
+					<label id="sign-up-institution-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Group leader</label>
+					<input type="text" id="sign-up-leader" autocomplete="off">
+					<label id="sign-up-leader-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Purpose*</label>
+					<textarea type="text" id="sign-up-purpose" autocomplete="off" maxlength="500" placeholder="Limit to 300 characters or less."></textarea>
+					<label id="sign-up-purpose-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<button type="button" id="sign-up-btn">Sign up
+					<span id="loading-icon" class="spinner"></span>
+				</button>
+			</div>
 	</div><!-- .entry-content -->
 	</div>
 </article><!-- #post-618 -->
