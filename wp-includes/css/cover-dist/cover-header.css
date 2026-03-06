@@ -6,7 +6,7 @@ div.site-header-upper-wrap{
 
 
 ul#primary-menu > li.menu-item > a{
-    min-width: max-content !important;
+    min-height: max-content;
     padding-left: 30px; 
     padding-right: 30px; 
     
@@ -36,3 +36,8 @@ ul.sub-menu > li.menu-item.current-menu-item > a{
     font-weight: 700 !important;
     color:#ffffff !important;
 }
+
+span.kadence-svg-iconset{
+    margin-left: 15px !important;
+}
+
