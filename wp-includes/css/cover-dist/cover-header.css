@@ -1,4 +1,9 @@
 
+div.site-header-upper-wrap{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
 
 ul#primary-menu > li.menu-item > a{
     min-width: max-content !important;
