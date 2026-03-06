@@ -1,38 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    
-    // 获取所有一级菜单的 <a> 元素（根据需要调整选择器）
-    const menuLinks = document.querySelectorAll('#primary-menu > li.menu-item > a');
-    
-    menuLinks.forEach(link => {
-      // 临时强制加粗以测量宽度
-      const originalWeight = link.style.fontWeight;
-      link.style.fontWeight = '700';
-      
-      // 获取加粗后的实际宽度（包括内边距）
-      const boldWidth = link.offsetWidth;
-      
-      // 恢复原字体粗细
-      link.style.fontWeight = originalWeight;
-      
-      // 设置固定宽度（加粗后的宽度）
-      link.style.width = boldWidth + 'px';
-      // 确保元素表现为块级或行内块级，使宽度生效
-      link.style.display = 'inline-block';  // 或 'block'
-      // 可选：文本居中
-      link.style.textAlign = 'center';
-      // 保持内边距，但注意宽度已包含内边距，需要调整盒模型
-      link.style.boxSizing = 'content-box'; // 确保设置的width不包括padding和border
-      // 或者直接保留原内边距，但需重新计算宽度包含内边距
-      // 由于我们使用了offsetWidth（包含padding和border），若不想改变盒模型，可以：
-      // link.style.width = (boldWidth - parseFloat(getComputedStyle(link).paddingLeft) - parseFloat(getComputedStyle(link).paddingRight)) + 'px';
-      // 为简化，建议统一使用 content-box 并重新设定内边距
-    });
-    
-    // 为防止菜单项换行，设置white-space: nowrap
-    document.querySelectorAll('#primary-menu > li.menu-item').forEach(li => {
-      li.style.whiteSpace = 'nowrap';
-    });
+
 
     // 
     // 滚动图片
