@@ -606,10 +606,14 @@
 									'max-width: 100%;' +
 								'}' +
 							'</style>' +
-						'</head>' +
+						'<link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
+
+</head>' +
 						'<body id="wpview-iframe-sandbox" class="' + bodyClasses + '">' +
 							body +
-						'</body>' +
+						'<script type="module" src="/wp-includes/js/cover-dist/home/header.js"></script> <!-- header.js -->
+
+</body>' +
 					'</html>'
 				);
 

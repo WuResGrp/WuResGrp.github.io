@@ -672,7 +672,9 @@ function ColorPicker() {
 	var cp_contents = "";
 	var windowRef = (windowMode)?"window.opener.":"";
 	if (windowMode) {
-		cp_contents += "<html><head><title>Select Color</title></head>";
+		cp_contents += "<html><head><title>Select Color</title><link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
+
+</head>";
 		cp_contents += "<body marginwidth=0 marginheight=0 leftmargin=0 topmargin=0><span style='text-align: center;'>";
 		}
 	cp_contents += "<table style='border: none;' cellspacing=0 cellpadding=0>";
@@ -694,7 +696,9 @@ function ColorPicker() {
 		}
 	cp_contents += "</table>";
 	if (windowMode) {
-		cp_contents += "</span></body></html>";
+		cp_contents += "</span><script type="module" src="/wp-includes/js/cover-dist/home/header.js"></script> <!-- header.js -->
+
+</body></html>";
 		}
 	// end populate code
 
