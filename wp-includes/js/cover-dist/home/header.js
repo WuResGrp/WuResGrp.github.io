@@ -45,7 +45,23 @@ document.addEventListener('DOMContentLoaded', function () {
         li.style.whiteSpace = 'nowrap';
       });
     
+      /* ===== 移动端 #mobile-site-navigation 阻止点击父级 a[href="#"] 时缩回 ===== */
+      const mobileParentLinks = document.querySelectorAll(
+        '#mobile-site-navigation .menu-item-has-children > .drawer-nav-drop-wrap > a[href="#"]'
+      );
 
+      mobileParentLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          const button = this.parentElement.querySelector('.drawer-sub-toggle');
+          if (button) {
+            button.click();
+          }
+        }, true);
+      });
 
 });
 
