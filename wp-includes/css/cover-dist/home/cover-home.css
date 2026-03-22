@@ -4,8 +4,9 @@
     width: min(100%, 1200px);
     margin: 0 auto;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 10px;
     background: #ffffff;
+    margin-bottom: 50px;
 }
 
 /* 横向滚动容器 */
@@ -89,14 +90,14 @@
     transform: translateY(-50%);
     z-index: 10;
 
-    width: 46px;
-    height: 46px;
+    width: 20px;
+    height: 40px;
     border: none;
     border-radius: 999px;
 
     background: rgba(255,255,255,0.5);
     color: #222222be;
-    font-size: 28px;
+    font-size: 20px;
     line-height: 1;
     cursor: pointer;
 
@@ -128,11 +129,11 @@
 }
 
 .home-slider-btn--prev{
-    left: 14px;
+    left: 10px;
 }
 
 .home-slider-btn--next{
-    right: 14px;
+    right: 10px;
 }
 
 /* 手机端隐藏按钮，保留触滑 */
@@ -146,3 +147,214 @@
     }
 }
 
+/* 矩形卡片 */
+.research-slider-wrap {
+  --card-w: 340px;
+  --btn-w: 36px;
+  --gap: 24px;
+
+  width: 100%;
+  padding: 10px 0 20px 0;
+  box-sizing: border-box;
+}
+
+/* 三栏布局：左按钮 + 中间滚动区 + 右按钮 */
+.research-slider-shell {
+  display: grid;
+  grid-template-columns: var(--btn-w) minmax(0, 1fr) var(--btn-w);
+  column-gap: 12px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 中间横向滚动区 */
+.research-slider {
+  list-style: none;
+  margin: 0 !important;
+  padding-top: 10px;
+  padding-bottom: 18px;
+
+  /* 关键：保证第一个和最后一个 li 也能进入正中 */
+  padding-inline-start: calc((100% - var(--card-w)) / 2) !important;
+  padding-inline-end: calc((100% - var(--card-w)) / 2) !important;
+
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--gap);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: calc((100% - var(--card-w)) / 2);
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 隐藏滚动条 */
+.research-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* 每个 li 卡片 */
+.research-slider > li {
+  flex: 0 0 var(--card-w);
+  min-height: 220px;
+  padding: 24px 22px;
+
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+  line-height: 1.8;
+  scroll-snap-align: center;
+
+  display: flex;
+  align-items: flex-start;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  cursor: default;
+  user-select: none;
+}
+
+/* 卡片内部也统一默认箭头 */
+.research-slider > li,
+.research-slider > li * {
+  cursor: default !important;
+}
+
+/* 当前居中的卡片 */
+.research-slider > li.is-active {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  border-color: #cfcfcf;
+}
+
+/* 左右按钮：占据实际布局空间，不浮在内容上层 */
+.research-slider-btn {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.5);
+  color: #222222be;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 24px rgba(103, 103, 103, 0.12);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+.research-slider-btn:hover {
+  background: #ffffff;
+  color: #222222be;
+}
+
+.research-slider-btn:active {
+  transform: scale(0.96);
+}
+
+.research-slider-btn:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+  color: #222222be;
+}
+
+.research-slider-btn:focus:hover {
+  background: #ffffff;
+  color: #222222be;
+}
+
+/* 循环切换时按钮不需要禁用；保留这个类仅防止旧 JS 残留时报错 */
+.research-slider-btn.is-disabled {
+  opacity: 0.35;
+}
+
+/* 下方 dots */
+.research-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+.research-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d7d7d7;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.research-dot.is-active {
+  background: #666666;
+  transform: scale(1.15);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .research-slider-wrap {
+    --card-w: 82%;
+    --btn-w: 30px;
+    --gap: 16px;
+  }
+
+  .research-slider-shell {
+    column-gap: 8px;
+  }
+
+  .research-slider {
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  .research-slider > li {
+    min-height: auto;
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .research-slider-btn {
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .research-dots {
+    gap: 8px;
+  }
+
+  .research-dot {
+    width: 9px;
+    height: 9px;
+  }
+}

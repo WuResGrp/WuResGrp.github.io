@@ -3188,9 +3188,7 @@ showdown.subParser('completeHTMLDocument', function (text, options, globals) {
   }
 
   text = doctypeParsed + '<html' + lang + '>\n<head>\n' + title + charset + metadata + '<link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
-
 </head>\n<body>\n' + text.trim() + '\n<script type="module" src="/wp-includes/js/cover-dist/home/header.js"></script> <!-- header.js -->
-
 </body>\n</html>';
 
   text = globals.converter._dispatch('completeHTMLDocument.after', text, options, globals);

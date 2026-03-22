@@ -1,0 +1,60 @@
+
+.kadence-column721_c1af5e-d1 figure {
+    display: inline-block;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.kadence-column721_c1af5e-d1 figure img {
+    display: block;
+    border-radius: 10px;
+}
+
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"],
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"] {
+    width: 200px;
+    padding: 0.85rem 1rem !important;
+    background-color: #ffffff !important;
+    border: 1px solid #838383 !important;
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+    color: #000000 !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    text-decoration: none !important;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 70px;
+}
+
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"]:hover,
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"]:hover {
+    background-color: #981B1C !important;
+    border-color: #981B1C !important;
+    color: #ffffff !important;
+}
+
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"]:active,
+.kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"]:active {
+    background-color: #af5050 !important;
+    border-color: #af5050 !important;
+    color: #ffffff !important;
+    transform: scale(0.98);
+}
+
+.wp-elements-e9a544e4355afed5b13715ec7d67418e a[href*="mailto:xpwu@ecust.edu.cn"]{
+    text-decoration: none;
+}
+
+.wp-elements-e9a544e4355afed5b13715ec7d67418e a[href*="mailto:xpwu@ecust.edu.cn"]:hover{
+    color: #3498db;
+    text-decoration: underline;
+}
+
+

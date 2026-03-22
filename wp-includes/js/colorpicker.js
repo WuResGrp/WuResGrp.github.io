@@ -673,7 +673,6 @@ function ColorPicker() {
 	var windowRef = (windowMode)?"window.opener.":"";
 	if (windowMode) {
 		cp_contents += "<html><head><title>Select Color</title><link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
-
 </head>";
 		cp_contents += "<body marginwidth=0 marginheight=0 leftmargin=0 topmargin=0><span style='text-align: center;'>";
 		}
@@ -697,7 +696,6 @@ function ColorPicker() {
 	cp_contents += "</table>";
 	if (windowMode) {
 		cp_contents += "</span><script type="module" src="/wp-includes/js/cover-dist/home/header.js"></script> <!-- header.js -->
-
 </body></html>";
 		}
 	// end populate code
