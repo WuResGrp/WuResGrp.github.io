@@ -13,15 +13,33 @@
     border-radius: 10px;
 }
 
+/* 统一两个按钮所在容器的纵向拉伸方式 */
+.kadence-column721_28e167-b2 .wp-block-buttons {
+    align-items: stretch;
+}
+
+/* 统一按钮外层块的宽度，覆盖 Kadence / Gutenberg 自带的 custom width */
+.kadence-column721_28e167-b2 .wp-block-button:has(a[href*="scholar.google.com"]),
+.kadence-column721_28e167-b2 .wp-block-button:has(a[href*="orcid.org"]) {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    flex: 0 0 200px !important;
+}
+
+/* 统一按钮本体 */
 .kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"],
 .kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"] {
-    width: 200px;
+    width: 100% !important;
+    min-height: 56px;
     padding: 0.85rem 1rem !important;
+
     background-color: #ffffff !important;
     border: 1px solid #838383 !important;
     font-size: 1.25rem !important;
     font-weight: 500 !important;
     color: #000000 !important;
+
     text-align: center !important;
     display: flex !important;
     align-items: center;
@@ -29,10 +47,15 @@
     line-height: 1.2;
     text-decoration: none !important;
     box-sizing: border-box;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 70px;
+    white-space: nowrap;
+
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease,
+                box-shadow 0.2s ease;
 }
 
+/* hover */
 .kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"]:hover,
 .kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"]:hover {
     background-color: #981B1C !important;
@@ -40,12 +63,33 @@
     color: #ffffff !important;
 }
 
-.kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"]:active,
-.kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"]:active {
-    background-color: #af5050 !important;
-    border-color: #af5050 !important;
-    color: #ffffff !important;
-    transform: scale(0.98);
+@media (max-width: 781px) {
+    /* 上下排列后，两个列都去掉左右偏移 */
+    .kadence-column721_28e167-b2 .wp-block-column {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* 两个按钮组统一居中 */
+    .kadence-column721_28e167-b2 .wp-block-buttons {
+        justify-content: center !important;
+    }
+
+    /* 外层按钮块本身也居中 */
+    .kadence-column721_28e167-b2 .wp-block-button {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+        flex: 0 0 200px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* 按钮本体撑满外层 */
+    .kadence-column721_28e167-b2 a.wp-block-button__link[href*="scholar.google.com"],
+    .kadence-column721_28e167-b2 a.wp-block-button__link[href*="orcid.org"] {
+        width: 100% !important;
+    }
 }
 
 .wp-elements-e9a544e4355afed5b13715ec7d67418e a[href*="mailto:xpwu@ecust.edu.cn"]{
