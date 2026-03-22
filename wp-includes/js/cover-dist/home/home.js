@@ -137,139 +137,172 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-/*
- * Research 卡片轮播
- */
-{
-    const researchSlider = document.querySelector('.research-slider');
-    const dotsWrap = document.querySelector('.research-dots');
-    const prevBtn = document.getElementById('research-prev');
-    const nextBtn = document.getElementById('research-next');
+    /*
+    * Research 卡片轮播
+    */
+    {
+        const researchSlider = document.querySelector('.research-slider');
+        const dotsWrap = document.querySelector('.research-dots');
+        const prevBtn = document.getElementById('research-prev');
+        const nextBtn = document.getElementById('research-next');
 
-    if (researchSlider && dotsWrap) {
-        const researchCards = Array.from(researchSlider.querySelectorAll('li'));
-        const total = researchCards.length;
+        if (researchSlider) {
+            const researchCards = Array.from(researchSlider.querySelectorAll('li'));
+            const total = researchCards.length;
+            const mobileMQ = window.matchMedia('(max-width: 768px)');
 
-        if (total > 0) {
-            dotsWrap.innerHTML = '';
-
-            researchCards.forEach((_, index) => {
-                const dot = document.createElement('span');
-                dot.className = 'research-dot';
-                dot.dataset.index = index;
-                dotsWrap.appendChild(dot);
-            });
-
-            const dots = Array.from(dotsWrap.querySelectorAll('.research-dot'));
-            let activeIndex = 0;
-            let ticking = false;
-
-            function normalizeIndex(index) {
-                return (index + total) % total;
-            }
-
-            function setActive(index) {
-                activeIndex = normalizeIndex(index);
-
-                researchCards.forEach((card, i) => {
-                    card.classList.toggle('is-active', i === activeIndex);
-                });
-
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('is-active', i === activeIndex);
-                });
-            }
-
-            /* 手动计算目标 scrollLeft，保证首尾都能真正居中 */
-            function getCenteredScrollLeft(index) {
-                const targetIndex = normalizeIndex(index);
-                const card = researchCards[targetIndex];
-                if (!card) return 0;
-
-                const targetLeft =
-                    card.offsetLeft - (researchSlider.clientWidth - card.offsetWidth) / 2;
-
-                const maxScrollLeft =
-                    researchSlider.scrollWidth - researchSlider.clientWidth;
-
-                return Math.max(0, Math.min(targetLeft, maxScrollLeft));
-            }
-
-            function centerCard(index, smooth = true) {
-                const targetIndex = normalizeIndex(index);
-                const targetLeft = getCenteredScrollLeft(targetIndex);
-
-                setActive(targetIndex);
-
-                researchSlider.scrollTo({
-                    left: targetLeft,
-                    behavior: smooth ? 'smooth' : 'auto'
-                });
-            }
-
-            /* 根据当前 scrollLeft 反推谁在中间 */
-            function getCenteredCardIndex() {
-                const viewportCenter =
-                    researchSlider.scrollLeft + researchSlider.clientWidth / 2;
-
-                let bestIndex = 0;
-                let minDistance = Infinity;
-
-                researchCards.forEach((card, index) => {
-                    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                    const distance = Math.abs(viewportCenter - cardCenter);
-
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        bestIndex = index;
-                    }
-                });
-
-                return bestIndex;
-            }
-
-            function syncFromScroll() {
-                setActive(getCenteredCardIndex());
-            }
-
-            researchSlider.addEventListener('scroll', function () {
-                if (!ticking) {
-                    window.requestAnimationFrame(function () {
-                        syncFromScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
+            if (total > 0) {
+                function isMobileResearch() {
+                    return mobileMQ.matches;
                 }
-            });
 
-            /* 左边按钮：第一个 -> 最后一个 */
-            if (prevBtn) {
-                prevBtn.addEventListener('click', function () {
-                    centerCard(activeIndex - 1, true);
-                });
+                function clearResearchState() {
+                    researchCards.forEach((card) => {
+                        card.classList.remove('is-active');
+                    });
+
+                    if (dotsWrap) {
+                        dotsWrap.innerHTML = '';
+                    }
+                }
+
+                /* 手机端：不启用轮播，直接纵向列表 */
+                if (isMobileResearch()) {
+                    clearResearchState();
+                } else if (dotsWrap) {
+                    dotsWrap.innerHTML = '';
+
+                    researchCards.forEach((_, index) => {
+                        const dot = document.createElement('span');
+                        dot.className = 'research-dot';
+                        dot.dataset.index = index;
+                        dotsWrap.appendChild(dot);
+                    });
+
+                    const dots = Array.from(dotsWrap.querySelectorAll('.research-dot'));
+                    let activeIndex = 0;
+                    let ticking = false;
+
+                    function normalizeIndex(index) {
+                        return (index + total) % total;
+                    }
+
+                    function setActive(index) {
+                        activeIndex = normalizeIndex(index);
+
+                        researchCards.forEach((card, i) => {
+                            card.classList.toggle('is-active', i === activeIndex);
+                        });
+
+                        dots.forEach((dot, i) => {
+                            dot.classList.toggle('is-active', i === activeIndex);
+                        });
+                    }
+
+                    function getCenteredScrollLeft(index) {
+                        const targetIndex = normalizeIndex(index);
+                        const card = researchCards[targetIndex];
+                        if (!card) return 0;
+
+                        const targetLeft =
+                            card.offsetLeft - (researchSlider.clientWidth - card.offsetWidth) / 2;
+
+                        const maxScrollLeft =
+                            researchSlider.scrollWidth - researchSlider.clientWidth;
+
+                        return Math.max(0, Math.min(targetLeft, maxScrollLeft));
+                    }
+
+                    function centerCard(index, smooth = true) {
+                        const targetIndex = normalizeIndex(index);
+                        const targetLeft = getCenteredScrollLeft(targetIndex);
+
+                        setActive(targetIndex);
+
+                        researchSlider.scrollTo({
+                            left: targetLeft,
+                            behavior: smooth ? 'smooth' : 'auto'
+                        });
+                    }
+
+                    function getCenteredCardIndex() {
+                        const viewportCenter =
+                            researchSlider.scrollLeft + researchSlider.clientWidth / 2;
+
+                        let bestIndex = 0;
+                        let minDistance = Infinity;
+
+                        researchCards.forEach((card, index) => {
+                            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                            const distance = Math.abs(viewportCenter - cardCenter);
+
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                bestIndex = index;
+                            }
+                        });
+
+                        return bestIndex;
+                    }
+
+                    function syncFromScroll() {
+                        setActive(getCenteredCardIndex());
+                    }
+
+                    researchSlider.addEventListener('scroll', function () {
+                        if (isMobileResearch()) return;
+
+                        if (!ticking) {
+                            window.requestAnimationFrame(function () {
+                                syncFromScroll();
+                                ticking = false;
+                            });
+                            ticking = true;
+                        }
+                    });
+
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', function () {
+                            if (isMobileResearch()) return;
+                            centerCard(activeIndex - 1, true);
+                        });
+                    }
+
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', function () {
+                            if (isMobileResearch()) return;
+                            centerCard(activeIndex + 1, true);
+                        });
+                    }
+
+                    dots.forEach((dot) => {
+                        dot.addEventListener('click', function () {
+                            if (isMobileResearch()) return;
+                            const index = Number(this.dataset.index);
+                            centerCard(index, true);
+                        });
+                    });
+
+                    window.addEventListener('resize', function () {
+                        if (isMobileResearch()) return;
+                        centerCard(activeIndex, false);
+                    });
+
+                    centerCard(0, false);
+                }
+
+                /* 跨越 768px 断点时直接刷新，避免桌面/手机布局和事件状态错乱 */
+                const handleBreakpointChange = function () {
+                    window.location.reload();
+                };
+
+                if (typeof mobileMQ.addEventListener === 'function') {
+                    mobileMQ.addEventListener('change', handleBreakpointChange);
+                } else if (typeof mobileMQ.addListener === 'function') {
+                    mobileMQ.addListener(handleBreakpointChange);
+                }
             }
-
-            /* 右边按钮：最后一个 -> 第一个 */
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function () {
-                    centerCard(activeIndex + 1, true);
-                });
-            }
-
-            dots.forEach((dot) => {
-                dot.addEventListener('click', function () {
-                    const index = Number(this.dataset.index);
-                    centerCard(index, true);
-                });
-            });
-
-            window.addEventListener('resize', function () {
-                centerCard(activeIndex, false);
-            });
-
-            centerCard(0, false);
         }
     }
-}
 
 });

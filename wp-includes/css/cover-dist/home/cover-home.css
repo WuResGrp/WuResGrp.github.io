@@ -158,8 +158,6 @@
   box-sizing: border-box;
 }
 
-
-
 /* 三栏布局：左按钮 + 中间滚动区 + 右按钮 */
 .research-slider-shell {
   display: grid;
@@ -177,7 +175,7 @@
   padding-top: 10px;
   padding-bottom: 18px;
 
-  /* 关键：保证第一个和最后一个 li 也能进入正中 */
+  /* 保证第一个和最后一个 li 也能进入正中 */
   padding-inline-start: calc((100% - var(--card-w)) / 2) !important;
   padding-inline-end: calc((100% - var(--card-w)) / 2) !important;
 
@@ -221,6 +219,7 @@
   scroll-snap-align: center;
 
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
 
   transition:
@@ -230,7 +229,6 @@
 
   cursor: default;
   user-select: none;
-  flex-direction: column;
 }
 
 .research-card-title {
@@ -247,7 +245,7 @@
   color: #444444;
 }
 
-/* 卡片内部也统一默认箭头 */
+/* 卡片内部统一默认箭头 */
 .research-slider > li,
 .research-slider > li * {
   cursor: default !important;
@@ -260,7 +258,7 @@
   border-color: #cfcfcf;
 }
 
-/* 左右按钮：占据实际布局空间，不浮在内容上层 */
+/* 左右按钮 */
 .research-slider-btn {
   position: relative;
   width: 100%;
@@ -308,7 +306,6 @@
   color: #222222be;
 }
 
-/* 循环切换时按钮不需要禁用；保留这个类仅防止旧 JS 残留时报错 */
 .research-slider-btn.is-disabled {
   opacity: 0.35;
 }
@@ -338,40 +335,58 @@
   transform: scale(1.15);
 }
 
-/* 响应式 */
+/* 手机端：改成纵向列表，隐藏按钮和 dots */
 @media (max-width: 768px) {
-  .research-slider-wrap {
-    --card-w: 82%;
-    --btn-w: 30px;
-    --gap: 16px;
-  }
-
   .research-slider-shell {
-    column-gap: 8px;
+    display: block;
   }
 
   .research-slider {
-    padding-top: 8px;
-    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    width: 100%;
+    overflow: visible;
+
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    scroll-padding-inline: 0;
   }
 
   .research-slider > li {
+    flex: none;
+    width: 100%;
     min-height: auto;
     padding: 18px 16px;
     border-radius: 18px;
+    scroll-snap-align: none;
+    transform: none !important;
   }
 
-  .research-slider-btn {
-    height: 36px;
-    font-size: 18px;
+  .research-slider > li.is-active {
+    transform: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #e6e6e6;
   }
 
+  .research-slider-btn,
   .research-dots {
-    gap: 8px;
+    display: none !important;
   }
 
-  .research-dot {
-    width: 9px;
-    height: 9px;
+  .research-card-title {
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+  }
+
+  .research-card-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
   }
 }
