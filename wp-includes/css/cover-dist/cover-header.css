@@ -23,12 +23,12 @@ ul#primary-menu > li.menu-item > a[href*="https://wuresgrp.github.io/events"]:ho
     cursor: pointer;
 }
 
-ul#primary-menu > li.menu-item.current-menu-item > a{
+ul#primary-menu > li.menu-item.current-page-item > a{
     font-weight: 700 !important;
     color:#ffffff !important;
 }
 
-ul#primary-menu > li.menu-item.current-menu-parent > a{
+ul#primary-menu > li.menu-item.current-page-parent > a{
     font-weight: 700 !important;
     color:#ffffff !important;
 }
