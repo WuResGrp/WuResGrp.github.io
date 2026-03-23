@@ -390,3 +390,13 @@
     line-height: 1.7;
   }
 }
+
+.hyphen-text {
+  hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: normal;
+}
