@@ -117,6 +117,16 @@ h4.wp-block-heading {
   	font-family: "Inter", sans-serif !important;
 }
 
+.member-info .visit-date-break {
+  display: inline;
+}
+
+@media (max-width: 480px) {
+  .member-info .visit-date-break {
+    display: block;
+  }
+}
+
 		</style>
 		<style id="core-block-supports-inline-css">
 .wp-container-core-columns-is-layout-9d6595d7{flex-wrap:nowrap;}
@@ -285,7 +295,14 @@ h4.wp-block-heading {
 </div>
 
 
-<p class="has-text-align-center">Ai-Min Yao <br>(姚爱民)<br>Visiting Period: Nov. 2025 – Jan. 2026</p>
+<p class="has-text-align-center member-info">
+  Ai-Min Yao <br>
+  (姚爱民)<br>
+  Visiting Period:<br>
+  <span class="visit-date">
+    Nov. 2025 – <span class="visit-date-break">Jan. 2026</span>
+  </span>
+</p>
 </div></div>
 </div>
 
