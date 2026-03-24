@@ -176,11 +176,15 @@ document.addEventListener('DOMContentLoaded', function () {
         applyFilter();
     });
 
-    /* 鼠标离开年份菜单区域，立刻隐藏 */
-    yearDropdown.addEventListener('mouseleave', function () {
+    /* 年份菜单区域隐藏 */
+    const header = document.querySelector('#masthead, .site-header, header');
+
+    if (header) {
+    header.addEventListener('mouseenter', function () {
         closeYearMenu();
     });
-
+    }
+    
     /* 点击别处关闭 */
     document.addEventListener('click', function (e) {
         if (!yearDropdown.contains(e.target)) {
