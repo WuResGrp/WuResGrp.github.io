@@ -1,0 +1,213 @@
+#publication-filter-block {
+  width: 100%;
+}
+
+#publication-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: stretch;
+}
+
+/* 统一控件高度 */
+#publication-filter-input,
+#publication-year-toggle,
+#publication-filter-btn {
+  min-height: 52px;
+  font-family: inherit;
+}
+
+/* 搜索框 */
+#publication-filter-input {
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: 0.8rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #1e1e1e;
+  line-height: 1.2;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#publication-filter-input::placeholder {
+  color: #aaaaaa;
+  font-weight: 300;
+  opacity: 1;
+}
+
+#publication-filter-input:hover {
+  border-color: #8f8f8f;
+}
+
+#publication-filter-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+}
+
+/* 年份下拉整体 */
+#publication-year-filter {
+  position: relative;
+  flex: 0 0 180px;
+  min-width: 160px;
+}
+
+/* 年份按钮 */
+#publication-year-toggle {
+  width: 100%;
+  padding: 0.8rem 2.6rem 0.8rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.2;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#publication-year-toggle:hover {
+  border-color: #8f8f8f;
+  box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.03);
+}
+
+#publication-year-toggle:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.03);
+}
+
+/* 右侧箭头 */
+.publication-year-arrow {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* 菜单面板 */
+.publication-year-menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  max-height: 260px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  box-sizing: border-box;
+  z-index: 20;
+  box-shadow: 4px 6px 14px rgba(0, 0, 0, 0.12);
+
+  /* Firefox 简约滚动条 */
+  scrollbar-width: thin;
+  scrollbar-color: #c9c9c9 transparent;
+}
+
+/* Chrome / Edge / Safari 简约滚动条 */
+.publication-year-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.publication-year-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.publication-year-menu::-webkit-scrollbar-thumb {
+  background-color: #c9c9c9;
+  border-radius: 999px;
+}
+
+.publication-year-menu::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+
+/* 每个年份项 */
+.publication-year-option {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  border: 0;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #1e1e1e;
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.2;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.publication-year-option:hover,
+.publication-year-option:focus,
+.publication-year-option.is-selected {
+  background-color: #981B1C;
+  color: #ffffff;
+  outline: none;
+}
+
+/* 按钮 */
+#publication-filter-btn {
+  padding: 0.85rem 1rem;
+  min-width: 120px;
+  background-color: #ffffff;
+  border: 1px solid #454545;
+  border-radius: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+#publication-filter-btn:hover {
+  background-color: #454545;
+  border-color: #454545;
+  color: #ffffff;
+}
+
+#publication-filter-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(179, 241, 255, 0);
+}
+
+#publication-filter-btn:active {
+  background-color: #a8a6a6;
+  border-color: #a8a6a6;
+  color: #ffffff;
+  transform: scale(0.98);
+}
+
+.search-hit {
+  color: #3498db;
+}
+
+#publication-list li:not(:last-child) {
+  margin-bottom: 24px;
+}

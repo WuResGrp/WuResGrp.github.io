@@ -1,4 +1,33 @@
 
+
+/* 网站字体 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+input, textarea, button, select, option {
+    font-family: "Quicksand", sans-serif !important;
+}
+
+/* 网站标题 */
+.site-title{
+    font-weight: 500 !important;
+}
+
+/* 面包屑对齐 */
+.hero-container{
+    transform: translateX(32px);
+}
+
 #kt-scroll-up{
     display: none !important;
 }
@@ -17,7 +46,7 @@ ul#primary-menu > li.menu-item > a{
 }
 
 ul#primary-menu > li.menu-item > a:hover{
-    font-weight: 700 !important;
+
     color:#ffffff !important;
     cursor: default;
 }
@@ -28,22 +57,22 @@ ul#primary-menu > li.menu-item > a[href*="https://wuresgrp.github.io/events"]:ho
 }
 
 ul#primary-menu > li.menu-item.current-page-item > a{
-    font-weight: 700 !important;
+
     color:#ffffff !important;
 }
 
 ul#primary-menu > li.menu-item.current-page-parent > a{
-    font-weight: 700 !important;
+
     color:#ffffff !important;
 }
 
 ul.sub-menu > li.menu-item > a:hover{
-    font-weight: 700 !important;
+
     color:#ffffff !important;
 }
 
 ul.sub-menu > li.menu-item.current-menu-item > a{
-    font-weight: 700 !important;
+
     color:#ffffff !important;
 }
 
