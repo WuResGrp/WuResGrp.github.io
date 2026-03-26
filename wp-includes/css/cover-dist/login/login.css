@@ -32,25 +32,32 @@
   margin-bottom: 1.5rem;
 }
 
-.log-in-label{
+.log-in-label {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 0.5rem;
-  flex-wrap: nowrap;          
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
-/* 右侧链接：空间不足 -> … */
-#forgot-pwd-btn{
-  color: #6f6f6f;  
-  margin-left: auto;          
+.log-in-label-text {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
 
-  min-width: 0;               
+#forgot-pwd-btn {
+  color: #6f6f6f;
+  margin-left: auto;
+
+  flex: 1 1 auto;
+  min-width: 0;
+
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;    
+  text-overflow: ellipsis;
   text-decoration: none;
-  display: block;             
+  display: block;
   text-align: right;
   cursor: pointer;
 }
