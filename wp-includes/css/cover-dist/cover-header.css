@@ -24,8 +24,22 @@ input, textarea, button, select, option {
 }
 
 /* 面包屑对齐 */
-.hero-container{
-    transform: translateX(32px);
+@media (min-width: 767.01px) {
+    .hero-container {
+        transform: translateX(32px);
+    }
+}
+
+@media (max-width: 767px) and (min-width: 719.01px) {
+    .hero-container {
+        transform: translateX(24px);
+    }
+}
+
+@media (max-width: 719px) {
+    .hero-container {
+        transform: translateX(12px);
+    }
 }
 
 #kt-scroll-up{
@@ -85,3 +99,7 @@ div.kadence-breadcrumb-container > span > a{
     cursor: text;
 }
 
+/* 移动端 */
+#mobile-site-navigation .menu-item-has-children > .drawer-nav-drop-wrap > a{
+    cursor: pointer;
+}

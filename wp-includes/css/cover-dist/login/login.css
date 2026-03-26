@@ -52,6 +52,7 @@
   text-decoration: none;
   display: block;             
   text-align: right;
+  cursor: pointer;
 }
 
 #forgot-pwd-btn:hover {

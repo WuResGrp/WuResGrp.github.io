@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         li.style.whiteSpace = 'nowrap';
       });
     
-      /* ===== 移动端 #mobile-site-navigation 阻止点击父级 a[href="#"] 时缩回 ===== */
+      /* ===== 移动端 #mobile-site-navigation 阻止点击父级 a 时缩回 ===== */
       const mobileParentLinks = document.querySelectorAll(
         '#mobile-site-navigation .menu-item-has-children > .drawer-nav-drop-wrap > a'
       );

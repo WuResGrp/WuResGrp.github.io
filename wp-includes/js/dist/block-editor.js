@@ -40015,12 +40015,10 @@ function Iframe({
 		</style>
 		${styles}
 		${scripts}
-	<link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
-</head>
+	</head>
 	<body>
 		<script>document.currentScript.parentElement.remove()</script>
-	<script type="module" src="/wp-includes/js/cover-dist/home/header.js"></script> <!-- header.js -->
-</body>
+	</body>
 </html>`;
   const [src, cleanup] = (0,external_wp_element_namespaceObject.useMemo)(() => {
     const _src = URL.createObjectURL(

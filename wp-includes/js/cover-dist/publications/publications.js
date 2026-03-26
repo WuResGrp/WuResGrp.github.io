@@ -10,16 +10,17 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!input || !yearDropdown || !yearToggle || !yearLabel || !yearMenu || !button || !list) return;
 
     const items = Array.from(list.querySelectorAll('li'));
+    const total = items.length;
     let selectedYear = '';
 
     items.forEach((li, index) => {
         li.dataset.originalHtml = li.innerHTML;
-        li.dataset.originalIndex = index + 1;
-        li.value = index + 1;
+        li.dataset.originalIndex = total - index;
+        li.value = total - index;
 
         const year = extractYear(li.textContent);
         if (year) {
-        li.dataset.year = year;
+            li.dataset.year = year;
         }
     });
 
