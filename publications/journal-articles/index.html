@@ -107,6 +107,26 @@ ol.wp-block-list li {
   	margin-bottom: 24px;
 }
 
+.author-notes p {
+  margin: 0;
+  margin-left: -5px;
+  display: flex;
+  align-items: baseline;
+}
+
+.author-notes .note-label {
+  display: inline-block;
+  width: 2ch;     
+  text-align: right;
+  margin-right: 0.5ch;
+  flex: 0 0 2ch;
+}
+
+.author-notes .note-text {
+	flex: 1;
+}
+
+
 </style>
 <link rel="stylesheet" href="/wp-includes/css/cover-dist/publications/publications.css"> <!-- publications.css -->
 <link rel="stylesheet" href="/wp-includes/css/cover-dist/cover-header.css"> <!-- cover-header.css -->
@@ -548,7 +568,11 @@ ol.wp-block-list li {
 </div>
 
 
-<p>*: Corresponding author<br>#: Co-first author</p>
+<div class="author-notes">
+  <p><span class="note-label">* :</span><span class="note-text">Corresponding author</span></p>
+  <p><span class="note-label">#:</span><span class="note-text">Co-first author</span></p>
+</div>
+
 </div><!-- .entry-content -->
 	</div>
 </article><!-- #post-852 -->
