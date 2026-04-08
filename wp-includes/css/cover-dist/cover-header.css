@@ -23,6 +23,24 @@ input, textarea, button, select, option {
     font-weight: 500 !important;
 }
 
+/* 上方导航栏色块对齐 */
+@media (min-width: 1380px)
+{
+    .site-header-row-container-inner
+    {
+        padding-left: 60px !important;
+    }
+}
+
+@media (max-width: 1379.99px)
+{
+    .site-header-row-container-inner
+    {
+        padding-left: 30px !important;
+    }
+}
+
+
 /* 面包屑对齐 */
 @media (min-width: 767.01px) {
     .hero-container {
