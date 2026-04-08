@@ -79,7 +79,7 @@ input, textarea, button, select, option {
 
 @media (max-width: 719px) {
     .hero-container {
-        transform: translateX(12px);
+        transform: translateX(8px);
     }
 }
 
