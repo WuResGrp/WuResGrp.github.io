@@ -1,7 +1,7 @@
 
-@media (max-width: 840px) {
+@media (max-width: 866px) {
   .mobile-break {
-    display: block;
+    display: block !important;
   }
 }
 

@@ -32,7 +32,15 @@ input, textarea, button, select, option {
     }
 }
 
-@media (max-width: 1379.99px)
+@media (max-width: 1379.99px) and (min-width: 1294px)
+{
+    .site-header-row-container-inner
+    {
+        padding-left: 58px !important;
+    }
+}
+
+@media (max-width: 1293.99px) and (min-width: 768.01px)
 {
     .site-header-row-container-inner
     {
@@ -40,6 +48,21 @@ input, textarea, button, select, option {
     }
 }
 
+@media (max-width: 768px) and (min-width: 720.01px)
+{
+    .site-header-row-container-inner
+    {
+        padding-left: 24px !important;
+    }
+}
+
+@media (max-width: 720px)
+{
+    .site-header-row-container-inner
+    {
+        padding-left: 5px !important;
+    }
+}
 
 /* 面包屑对齐 */
 @media (min-width: 767.01px) {
