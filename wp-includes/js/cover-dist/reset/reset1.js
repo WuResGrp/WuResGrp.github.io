@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const logInBtn = document.getElementById('log-in-btn');
 
     logInBtn.addEventListener('click', async () => {
-        window.location.href = 'https://wuresgrp.github.io/login/';
+        window.location.href = '/login/';
     });
 
     const resetBtn = document.getElementById('reset-btn');
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return null;
             }
 
-            const redirectUrl = `https://wuresgrp.github.io/reset2`;
+            const redirectUrl = `/reset2`;
             const { resetError } = await supabase.auth.resetPasswordForEmail(inputData.userEmail, {
                 redirectTo: redirectUrl
             });

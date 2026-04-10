@@ -83,8 +83,95 @@ input, textarea, button, select, option {
     }
 }
 
-#kt-scroll-up{
-    display: none !important;
+/* 回到顶部按钮整体样式 */
+#kt-scroll-up,
+#kt-scroll-up-reader {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#kt-scroll-up,
+#kt-scroll-up-reader,
+.kadence-scroll-to-top {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #222222be !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  box-shadow: 0 6px 24px rgba(103, 103, 103, 0.12);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* hover */
+#kt-scroll-up:hover,
+#kt-scroll-up-reader:hover,
+.kadence-scroll-to-top:hover {
+  background: #ffffff !important;
+  color: #222222be !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(103, 103, 103, 0.16);
+}
+
+/* active */
+#kt-scroll-up:active,
+#kt-scroll-up-reader:active,
+.kadence-scroll-to-top:active {
+  transform: scale(0.9);
+}
+
+/* focus */
+#kt-scroll-up:focus,
+#kt-scroll-up-reader:focus,
+.kadence-scroll-to-top:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #222222be !important;
+  box-shadow: 0 6px 24px rgba(103, 103, 103, 0.12);
+}
+
+/* SVG 图标大小和居中 */
+#kt-scroll-up svg,
+#kt-scroll-up-reader svg,
+.kadence-scroll-to-top svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: currentColor;
+  transform: translateX(-7.5px);
+}
+
+/* 如果 Kadence 默认给它加了边框或伪元素，也顺手清掉 */
+#kt-scroll-up::before,
+#kt-scroll-up::after,
+#kt-scroll-up-reader::before,
+#kt-scroll-up-reader::after,
+.kadence-scroll-to-top::before,
+.kadence-scroll-to-top::after {
+  display: none !important;
+  content: none !important;
 }
 
 div.site-header-upper-wrap{
@@ -92,6 +179,18 @@ div.site-header-upper-wrap{
     margin-bottom: 20px;
 }
 
+ul#primary-menu{
+    display: flex;
+    flex-wrap: nowrap;   /* 不允许 li 换到下一行 */
+}
+
+ul#primary-menu > li.menu-item{
+    flex: 0 0 auto;      /* 每个 li 保持自身宽度，不被压缩换行 */
+}
+
+ul#primary-menu > li.menu-item > a{
+    white-space: nowrap; /* 文字本身也不换行 */
+}
 
 ul#primary-menu > li.menu-item > a{
     min-height: max-content;
@@ -106,8 +205,8 @@ ul#primary-menu > li.menu-item > a:hover{
     cursor: default;
 }
 
-ul#primary-menu > li.menu-item > a[href*="https://wuresgrp.github.io/"]:hover,
-ul#primary-menu > li.menu-item > a[href*="https://wuresgrp.github.io/events"]:hover{
+ul#primary-menu > li.menu-item > a[href*="/"]:hover,
+ul#primary-menu > li.menu-item > a[href*="/events"]:hover{
     cursor: pointer;
 }
 

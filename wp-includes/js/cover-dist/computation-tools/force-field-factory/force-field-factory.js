@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             downloadMasking(user, fileNames);
         } else {
             sessionStorage.setItem("post_login_next", window.location.href);
-            window.location.href = 'https://wuresgrp.github.io/login/';
+            window.location.href = '/login/';
         }
 
     });

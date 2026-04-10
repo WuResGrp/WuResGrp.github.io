@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             registerBtn.removeAttribute("disabled");
             return;
         } else {
-            window.location.href = 'https://wuresgrp.github.io/login/';
+            window.location.href = '/login/';
         }
         
     });

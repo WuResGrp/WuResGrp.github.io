@@ -121,7 +121,7 @@
 }
 
 .home-slider-btn:active{
-    transform: translateY(-50%) scale(0.96);
+    transform: translateY(-50%) scale(0.90);
 }
 
 .home-slider-btn:focus{
@@ -298,18 +298,14 @@
 }
 
 .research-slider-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.90);
 }
 
 .research-slider-btn:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.5);
   color: #222222be;
-}
-
-.research-slider-btn:focus:hover {
-  background: #ffffff;
-  color: #222222be;
+  box-shadow: 0 6px 24px rgba(103, 103, 103, 0.12);
 }
 
 .research-slider-btn.is-disabled {

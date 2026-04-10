@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	const { data: { session } } = await supabase.auth.getSession();
 	const user = session?.user;
 	if (user) {
-		window.location.href = 'https://wuresgrp.github.io/computation-tools/';
+		window.location.href = '/computation-tools/';
 	};
 
     function getSignInData() {
@@ -83,20 +83,20 @@ document.addEventListener('DOMContentLoaded', async function() {
 		
 		const next = sessionStorage.getItem("post_login_next");
 		sessionStorage.removeItem("post_login_next");
-		window.location.replace(next && next.trim() ? next : 'https://wuresgrp.github.io/computation-tools/');
+		window.location.replace(next && next.trim() ? next : '/computation-tools/');
 		
     });
 
 	const forgotBtn = document.getElementById('forgot-pwd-btn');
 
 	forgotBtn.addEventListener('click', async () => {
-        window.location.href = 'https://wuresgrp.github.io/reset1/';
+        window.location.href = '/reset1/';
     });
 
 	const signUpBtn = document.getElementById('sign-up-btn');
 
 	signUpBtn.addEventListener('click', async () => {
-        window.location.href = 'https://wuresgrp.github.io/signup/';
+        window.location.href = '/signup/';
     });
 
 });

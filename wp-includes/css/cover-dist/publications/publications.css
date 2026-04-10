@@ -3,8 +3,9 @@
 }
 
 #publication-filter-bar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 180px 120px;
+  grid-template-areas: "input year btn";
   gap: 12px;
   margin-bottom: 32px;
   align-items: stretch;
@@ -20,8 +21,9 @@
 
 /* 搜索框 */
 #publication-filter-input {
-  flex: 1 1 260px;
-  min-width: 220px;
+  grid-area: input;
+  width: 100%;
+  min-width: 0;
   padding: 0.8rem 1rem;
   background-color: #ffffff;
   border: 1px solid #c0c0c0;
@@ -51,9 +53,12 @@
 
 /* 年份下拉整体 */
 #publication-year-filter {
+  grid-area: year;
   position: relative;
-  flex: 0 0 180px;
-  min-width: 160px;
+  width: 180px;
+  min-width: 0;
+  box-sizing: border-box;
+  justify-self: start;
 }
 
 /* 年份按钮 */
@@ -79,12 +84,12 @@
 
 #publication-year-toggle:hover {
   border-color: #8f8f8f;
-  box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.03);
 }
 
 #publication-year-toggle:focus {
   border-color: #3498db;
-  box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.03);
 }
 
 /* 右侧箭头 */
@@ -115,8 +120,6 @@
   box-sizing: border-box;
   z-index: 20;
   box-shadow: 4px 6px 14px rgba(0, 0, 0, 0.12);
-
-  /* Firefox 简约滚动条 */
   scrollbar-width: thin;
   scrollbar-color: #c9c9c9 transparent;
 }
@@ -166,8 +169,10 @@
 
 /* 按钮 */
 #publication-filter-btn {
+  grid-area: btn;
+  width: auto;
+  min-width: 0;
   padding: 0.85rem 1rem;
-  min-width: 120px;
   background-color: #ffffff;
   border: 1px solid #454545;
   border-radius: 0;
@@ -184,6 +189,7 @@
   gap: 8px;
   box-sizing: border-box;
   font-family: inherit;
+  justify-self: stretch;
 }
 
 #publication-filter-btn:hover {
@@ -204,10 +210,93 @@
   transform: scale(0.98);
 }
 
+/* 大屏：按钮固定 120px */
+@media (min-width: 901px) {
+  #publication-filter-btn {
+    width: 120px;
+    justify-self: start;
+  }
+}
+
+/* 第一阶段：input 一行；year 和 btn 到第二行
+   year 保持 180px，btn 占剩余宽度 */
+@media (max-width: 900px) {
+  #publication-filter-bar {
+    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-areas:
+      "input input"
+      "year  btn";
+  }
+
+  #publication-year-filter {
+    width: 180px;
+    justify-self: start;
+  }
+
+  #publication-filter-btn {
+    width: auto;
+    min-width: 0;
+    justify-self: stretch;
+  }
+}
+
+/* 第二阶段：input / year / btn 各占一行
+   year 保持 180px，btn 占满整行 */
+@media (max-width: 400px) {
+  #publication-filter-bar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "input"
+      "year"
+      "btn";
+  }
+
+  #publication-year-filter {
+    width: 100%;
+    justify-self: start;
+  }
+
+  #publication-filter-btn {
+    width: auto;
+    min-width: 0;
+    justify-self: stretch;
+  }
+}
+
 .search-hit {
   color: #3498db;
 }
 
+
 #publication-list li:not(:last-child) {
   margin-bottom: 24px;
 }
+
+ol.wp-block-list {
+	padding-left: 22px;
+}
+
+ol.wp-block-list li {
+  	margin-bottom: 24px;
+}
+
+.author-notes p {
+  margin: 0;
+  margin-left: -5px;
+  display: flex;
+  align-items: baseline;
+}
+
+.author-notes .note-label {
+  display: inline-block;
+  width: 2ch;     
+  text-align: right;
+  margin-right: 0.5ch;
+  flex: 0 0 2ch;
+}
+
+.author-notes .note-text {
+	flex: 1;
+}
+
+
