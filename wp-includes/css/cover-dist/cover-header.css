@@ -92,6 +92,16 @@ input, textarea, button, select, option {
 
 #kt-scroll-up,
 #kt-scroll-up-reader,
+.kadence-scroll-to-top,
+.kadence-scroll-to-top.vs-sm-false {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#kt-scroll-up,
+#kt-scroll-up-reader,
 .kadence-scroll-to-top {
   width: 40px;
   height: 40px;
