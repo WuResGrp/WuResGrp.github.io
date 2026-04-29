@@ -51,36 +51,49 @@ async function handleDownload(fileName) {
     }
 }
 
-export async function downloadMasking(user, fileNames) {
+export async function downloadMasking(user, fileNames, commentLabels = []) {
 
     const downloadUserName = document.getElementById('download-user-name');
     const downloadMasking = document.getElementById('download-masking');
     const downloadModal = document.getElementById("download-modal");
 	
     const names = [
-		user.user_metadata.firstName,
-		user.user_metadata.middleInitial,
-		user.user_metadata.lastName
-	].filter(Boolean); // 过滤掉空字符串、null、undefined 等假值
-    downloadUserName.innerText = `Welcome, ${names.join(' ')}.`
+        user.user_metadata.firstName,
+        user.user_metadata.middleInitial,
+        user.user_metadata.lastName
+    ].filter(Boolean);
+
+    downloadUserName.innerText = `Welcome, ${names.join(' ')}.`;
 
     downloadMasking.classList.add("is-open");
+
     downloadMasking.addEventListener("click", (e) => {
-        if (!downloadModal.contains(e.target)) downloadMasking.classList.remove("is-open");
+        if (!downloadModal.contains(e.target)) {
+            downloadMasking.classList.remove("is-open");
+        }
     });
 
     const downloadOptions = document.getElementById('download-options');
     let htmlString = '';
+
     fileNames.forEach((file, index) => {
+        const comment = commentLabels[index] || '';
+
         htmlString += `
             <div class="download-group">
-                <label>${file}</label>
-                <button id="btn-${index}" data-index="${index}">Download
-                    <span id="download-btn-${index}-loading-icon" class="spinner"></span>
-                </button>
+                <label class="download-comment-label">
+                    <strong>${comment}</strong>
+                </label>
+
+                <div class="download-file-row">
+                    <label>${file}</label>
+                    <button id="btn-${index}" data-index="${index}">
+                        Download
+                        <span id="download-btn-${index}-loading-icon" class="spinner"></span>
+                    </button>
+                </div>
             </div>
         `;
-
     });
 
     downloadOptions.innerHTML = htmlString;

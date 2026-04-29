@@ -14,6 +14,12 @@ const fileNames = [
     "MODEX.prm",
 ];
 
+const commentLabels = [
+    "Executable : ",
+    "Manual : ",
+    `<span style="font-style: italic">Tinker</span> parameter file : `
+];
+
 document.addEventListener('DOMContentLoaded', async function() {
 
     const downloadBtn = document.getElementById('FFF-download');
@@ -23,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const user = session?.user;
 
         if (user) {
-            downloadMasking(user, fileNames);
+            downloadMasking(user, fileNames, commentLabels);
         } else {
             sessionStorage.setItem("post_login_next", window.location.href);
             window.location.href = '/login/';
