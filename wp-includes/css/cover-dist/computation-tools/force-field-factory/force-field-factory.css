@@ -1,9 +1,19 @@
 #FFF-download {
     display: block;
     width: max-content;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
     cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        text-underline-offset 0.25s ease,
+        text-decoration-thickness 0.25s ease;
 }
 
-#FFF-download:hover{
+#FFF-download:hover {
     color: #3498db;
+    text-underline-offset: 7px;
+    text-decoration-thickness: 1px;
 }

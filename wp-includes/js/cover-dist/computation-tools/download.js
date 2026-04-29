@@ -7,52 +7,47 @@ const supabase = createClient(
 );
 
 async function handleDownload(fileName) {
+    const overlayDiv = document.getElementById(`overlay`);
+
     try {
-        const overlayDiv = document.getElementById(`overlay`);
         if (overlayDiv) overlayDiv.style.display = "block";
+
         const { data, error } = await supabase.storage
             .from('computation-tools')
-            .createSignedUrl(fileName, 300);
+            .createSignedUrl(fileName, 300, {
+                download: fileName
+            });
+
         if (error) {
             alert(`Failed to download: ${error.message}`);
             return;
         }
-        if (overlayDiv) overlayDiv.style.display = "none";
-        const headResponse = await fetch(data.signedUrl, { method: 'HEAD' });
-        if (!headResponse.ok) {
-            const link = document.createElement('a');
-            link.href = data.signedUrl;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+
+        const response = await fetch(data.signedUrl);
+
+        if (!response.ok) {
+            alert('Download failed.');
             return;
         }
-        const contentType = headResponse.headers.get('content-type') || '';
+
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+
         const link = document.createElement('a');
-        link.download = fileName; 
-        if (contentType.startsWith('text/') || contentType.startsWith('image/')) {
-            const response = await fetch(data.signedUrl);
-            if (!response.ok) {
-                alert('Download failed.');
-                return;
-            }
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            link.href = url;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        } else {
-            link.href = data.signedUrl;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        link.href = blobUrl;
+        link.download = fileName;
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(blobUrl);
+
     } catch (err) {
-        if (overlayDiv) overlayDiv.style.display = "none";
+        console.error(err);
         alert('Download failed.');
+    } finally {
+        if (overlayDiv) overlayDiv.style.display = "none";
     }
 }
 

@@ -9,7 +9,9 @@ const supabase = createClient(
 import { downloadMasking } from"../download.js"
 
 const fileNames = [
-    "test.txt", "test1.txt", "test2.txt",
+    "force_field_factory_1.0.tar.gz", 
+    "manual_force_field_factory_v1.0.pdf", 
+    "MODEX.prm",
 ];
 
 document.addEventListener('DOMContentLoaded', async function() {
