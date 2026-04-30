@@ -9,15 +9,11 @@ const supabase = createClient(
 import { downloadMasking } from"../download.js"
 
 const fileNames = [
-    "force_field_factory_1.0.tar.gz", 
-    "manual_force_field_factory_v1.0.pdf", 
-    /* "MODEX.prm", */
+    "MODEX.prm", 
 ];
 
 const commentLabels = [
-    "Executable : ",
-    "Manual : ",
-    /* `<span style="font-style: italic">Tinker</span> parameter file : ` */
+    `<span style="font-style: italic">Tinker</span> parameter file : ` 
 ];
 
 document.addEventListener('DOMContentLoaded', async function() {
