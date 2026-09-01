@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     middleInitial: inputData.middleInitial,
                     lastName: inputData.lastName,
                     institution: inputData.institution,
-                    leader: inputData.leader,
+                    leader: inputData.groupLeader,
                     country: inputData.country,
                     purpose: inputData.purpose
                     }
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             middleInitial: inputData.middleInitial,
             lastName: inputData.lastName,
             institution: inputData.institution,
-            leader: inputData.leader,
+            leader: inputData.groupLeader,
             country: inputData.country,
             purpose: inputData.purpose
         });
