@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	const { data: { user }, error: userError } = await supabase.auth.getUser();
 
 	if (user) {
-		window.location.href = '/computation-tools/';
+		window.location.href = '/computational-tools/';
 		return;
 	}
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 		
 		const next = sessionStorage.getItem("post_login_next");
 		sessionStorage.removeItem("post_login_next");
-		window.location.replace(next && next.trim() ? next : '/computation-tools/');
+		window.location.replace(next && next.trim() ? next : '/computational-tools/');
 		
     });
 
