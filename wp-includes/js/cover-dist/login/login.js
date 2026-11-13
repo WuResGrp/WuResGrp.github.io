@@ -9,11 +9,18 @@ const supabase = createClient(
 
 document.addEventListener('DOMContentLoaded', async function() {
 
-	const { data: { session } } = await supabase.auth.getSession();
-	const user = session?.user;
+	// 用服务端校验代替本地缓存判断：账号被删除或 token 过期时，
+	// 本地残留的会话会让登录页反复弹回工具页，这里主动清掉失效会话
+	const { data: { user }, error: userError } = await supabase.auth.getUser();
+
 	if (user) {
 		window.location.href = '/computation-tools/';
-	};
+		return;
+	}
+
+	if (userError && (userError.status === 401 || userError.status === 403)) {
+		await supabase.auth.signOut({ scope: 'local' });
+	}
 
     function getSignInData() {
 		const userEmail = document.getElementById('log-in-email')?.value || '';
