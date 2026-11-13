@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         const institution = document.getElementById('sign-up-institution')?.value || '';
         const groupLeader = document.getElementById('sign-up-leader')?.value || '';
         const purpose = document.getElementById('sign-up-purpose')?.value || '';
+        const resources = Array.from(document.querySelectorAll('.sign-up-resource:checked')).map(cb => cb.value);
+        const usageType = document.getElementById('sign-up-usage-type')?.value || '';
 
         return {
             email,
@@ -30,7 +32,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             country,
             institution,
             groupLeader,
-            purpose
+            purpose,
+            resources,
+            usageType
         };
     };
 
@@ -45,9 +49,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         allFilled = true;
 
         const requiredFieldIds = [
-            'sign-up-email', 'sign-up-password', 
-            'sign-up-confirm-password', 'sign-up-first-name', 'sign-up-last-name', 
-            'sign-up-country', 'sign-up-institution', 'sign-up-purpose'
+            'sign-up-email', 'sign-up-password',
+            'sign-up-confirm-password', 'sign-up-first-name', 'sign-up-last-name',
+            'sign-up-country', 'sign-up-institution', 'sign-up-usage-type', 'sign-up-purpose'
         ];
 
         requiredFieldIds.forEach(id => {
@@ -63,6 +67,16 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
 
         });
+
+        /* 资源勾选框：至少勾选一项 */
+        const checkedResources = document.querySelectorAll('.sign-up-resource:checked');
+        const resourcesWarning = document.getElementById('sign-up-resources-blank');
+        if (checkedResources.length === 0) {
+            allFilled = false;
+            if (resourcesWarning) resourcesWarning.style.display = 'block';
+        } else {
+            if (resourcesWarning) resourcesWarning.style.display = 'none';
+        }
 
         const inputData = getSignUpFormData();
         if (inputData.confirmPassword !== inputData.password) {
@@ -101,7 +115,9 @@ document.addEventListener('DOMContentLoaded', async function() {
                     institution: inputData.institution,
                     leader: inputData.groupLeader,
                     country: inputData.country,
-                    purpose: inputData.purpose
+                    purpose: inputData.purpose,
+                    resources: inputData.resources,
+                    usageType: inputData.usageType
                     }
                 })
                 });
@@ -140,7 +156,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             institution: inputData.institution,
             leader: inputData.groupLeader,
             country: inputData.country,
-            purpose: inputData.purpose
+            purpose: inputData.purpose,
+            resources: inputData.resources,
+            usageType: inputData.usageType
         });
 
         if (!registeredUser) {

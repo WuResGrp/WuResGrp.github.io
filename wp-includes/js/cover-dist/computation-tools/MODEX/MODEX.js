@@ -16,21 +16,32 @@ const commentLabels = [
     `<span style="font-style: italic">Tinker</span> parameter file : ` 
 ];
 
+/* 本页面全部文件归属的资源名称；下载前按用户 metadata 中批准的 resources 校验 */
+const requiredResource = "MODEX";
+
 document.addEventListener('DOMContentLoaded', async function() {
 
     const downloadBtn = document.getElementById('FFF-download');
 
     downloadBtn.addEventListener('click', async () => {
-        const { data: { session } } = await supabase.auth.getSession();
-        const user = session?.user;
+        // getUser() 实时读取服务端用户资料，管理员授权后无需重新登录即可生效
+        const { data: { user } } = await supabase.auth.getUser();
 
-        if (user) {
-            downloadMasking(user, fileNames, commentLabels);
-        } else {
+        if (!user) {
             sessionStorage.setItem("post_login_next", window.location.href);
             window.location.href = '/login/';
+            return;
         }
 
+        // accessed_resources 是管理员授权键；未授权则转到重新申请页，并携带资源名供预勾选
+        const grantedResources = user.user_metadata?.accessed_resources || [];
+        if (!grantedResources.includes(requiredResource)) {
+            sessionStorage.setItem("reapply_resource", requiredResource);
+            window.location.href = '/reapply/';
+            return;
+        }
+
+        downloadMasking(user, fileNames, commentLabels);
     });
 
 });

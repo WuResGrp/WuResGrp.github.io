@@ -177,4 +177,67 @@
   100% { transform: rotate(360deg); }
 }
 
+/* 资源勾选框行：flex 换行布局，窄屏自动折行 */
+#sign-up-card .sign-up-checkbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  padding-top: 0.1rem;
+}
+
+/* 覆盖父级 .sign-up-input-group label 的 flex 两端对齐、整行宽度与字号，恢复内联排列 */
+#sign-up-card .sign-up-checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1e1e1e;
+  cursor: pointer;
+}
+
+#sign-up-card .sign-up-checkbox-item input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  accent-color: #3498db;
+  cursor: pointer;
+}
+
+/* 已申请/已授权的资源：禁用态勾选框，灰色文字 */
+#sign-up-card .sign-up-checkbox-item input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+}
+
+#sign-up-card .sign-up-checkbox-item.disabled-resource {
+  color: #8a8a8a;
+}
+
+/* 下拉框：与现有输入框保持一致的直角黑白灰风格 */
+#sign-up-card select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: #ffffff;
+  border: 1px solid #c0c0c0;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #1e1e1e;
+  font-family: inherit;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+#sign-up-card select:hover {
+  border-color: #8f8f8f;
+}
+
+#sign-up-card select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+}
+
 

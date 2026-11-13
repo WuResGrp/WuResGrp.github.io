@@ -288,8 +288,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 					</label>
 				</div>
 				<div class="sign-up-input-group">
-					<label>Purpose*</label>
-					<textarea type="text" id="sign-up-purpose" autocomplete="off" maxlength="500" placeholder="Limit to 500 characters or less. You can let us know directly which tool you wish to download and its intended use. We will contact you shortly."></textarea>
+					<label>Resources to download*</label>
+					<div class="sign-up-checkbox-row">
+						<label class="sign-up-checkbox-item">
+							<input type="checkbox" class="sign-up-resource" value="Force Field Factory">Force Field Factory
+						</label>
+						<label class="sign-up-checkbox-item">
+							<input type="checkbox" class="sign-up-resource" value="MODEX">MODEX
+						</label>
+					</div>
+					<label id="sign-up-resources-blank" class="input-warning">
+						Please select at least one resource.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Usage type*</label>
+					<select id="sign-up-usage-type">
+						<option value="" disabled selected>Please select...</option>
+						<option value="Academic">Academic</option>
+						<option value="Commercial">Commercial</option>
+						<option value="Teaching">Teaching</option>
+					</select>
+					<label id="sign-up-usage-type-blank" class="input-warning">
+						Please fill in this field.
+					</label>
+				</div>
+				<div class="sign-up-input-group">
+					<label>Brief description of intended use*</label>
+					<textarea type="text" id="sign-up-purpose" autocomplete="off" maxlength="500"></textarea>
 					<label id="sign-up-purpose-blank" class="input-warning">
 						Please fill in this field.
 					</label>
