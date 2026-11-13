@@ -6,12 +6,12 @@ const supabase = createClient(
 	'sb_publishable_4vbRXO-L2_RCSbJI6Sxweg_WhuckUgD'
 );
 
-/* 文件 → 资源 归属表；新增可下载文件时必须在此登记，未登记的文件默认拒绝下载 */
-const FILE_RESOURCE_MAP = {
-	"force_field_factory_1.0.tar.gz": "Force Field Factory",
-	"manual_force_field_factory_v1.0.pdf": "Force Field Factory",
-	"MODEX.prm": "MODEX",
-};
+/* 资源名 = 文件路径的第一层文件夹名（文件夹名必须与资源名完全一致）；
+   路径不含文件夹的裸文件视为未归属，默认拒绝下载 */
+function resourceOf(fileName) {
+	const folder = fileName.split('/')[0];
+	return folder !== undefined && folder !== fileName ? folder : undefined;
+}
 
 async function handleDownload(user, fileName) {
     const overlayDiv = document.getElementById(`overlay`);
@@ -19,7 +19,7 @@ async function handleDownload(user, fileName) {
     try {
         /* 与 Storage RLS 策略保持一致的二次校验：未授权的资源转去重新申请页 */
         const grantedResources = user.user_metadata?.accessed_resources || [];
-        const ownerResource = FILE_RESOURCE_MAP[fileName];
+        const ownerResource = resourceOf(fileName);
         if (ownerResource === undefined || !grantedResources.includes(ownerResource)) {
             if (ownerResource !== undefined) {
                 sessionStorage.setItem("reapply_resource", ownerResource);
@@ -54,7 +54,7 @@ async function handleDownload(user, fileName) {
 
         const link = document.createElement('a');
         link.href = blobUrl;
-        link.download = fileName;
+        link.download = fileName.split('/').pop(); // 保存到本地时去掉文件夹前缀
 
         document.body.appendChild(link);
         link.click();
@@ -77,7 +77,7 @@ export async function downloadMasking(user, fileNames, commentLabels = []) {
     const allowedEntries = fileNames
         .map((file, index) => ({ file, index }))
         .filter(({ file }) => {
-            const ownerResource = FILE_RESOURCE_MAP[file];
+            const ownerResource = resourceOf(file);
             return ownerResource !== undefined && grantedResources.includes(ownerResource);
         });
 

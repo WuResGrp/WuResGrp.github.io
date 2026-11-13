@@ -9,7 +9,7 @@ const supabase = createClient(
 import { downloadMasking } from"../download.js"
 
 const fileNames = [
-    "MODEX.prm", 
+    "MODEX/MODEX.prm",
 ];
 
 const commentLabels = [

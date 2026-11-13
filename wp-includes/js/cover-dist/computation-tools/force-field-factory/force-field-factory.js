@@ -9,9 +9,8 @@ const supabase = createClient(
 import { downloadMasking } from"../download.js"
 
 const fileNames = [
-    "force_field_factory_1.0.tar.gz", 
-    "manual_force_field_factory_v1.0.pdf", 
-    /* "MODEX.prm", */
+    "Force Field Factory/force_field_factory_1.0.tar.gz",
+    "Force Field Factory/manual_force_field_factory_v1.0.pdf",
 ];
 
 const commentLabels = [
