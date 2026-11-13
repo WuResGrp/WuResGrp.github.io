@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+      const applyMenuLayout = function () {
+
       const menu = document.querySelector('#primary-menu');
       const menuItems = document.querySelectorAll('#primary-menu > li.menu-item');
       const menuLinks = document.querySelectorAll('#primary-menu > li.menu-item > a');
@@ -62,6 +64,16 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }, true);
       });
+
+      };
+
+      // 等待全部资源（含 Google Fonts 字体文件）加载完成后再测量菜单宽度，
+      // 避免字体晚于测量加载、真实文字比固定宽度宽而造成文字重叠
+      if (document.readyState === 'complete') {
+          applyMenuLayout();
+      } else {
+          window.addEventListener('load', applyMenuLayout);
+      }
 
 });
 
