@@ -78,7 +78,7 @@ export async function downloadMasking(user, fileNames, commentLabels = []) {
         .map((file, index) => ({ file, index }))
         .filter(({ file }) => {
             const ownerResource = FILE_RESOURCE_MAP[file];
-            return ownerResource !== undefined && approvedResources.includes(ownerResource);
+            return ownerResource !== undefined && grantedResources.includes(ownerResource);
         });
 
     if (allowedEntries.length === 0) {
