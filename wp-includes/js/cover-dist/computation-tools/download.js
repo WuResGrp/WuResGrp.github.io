@@ -120,7 +120,7 @@ export async function downloadMasking(user, fileNames, commentLabels = []) {
                 </label>
 
                 <div class="download-file-row">
-                    <label>${file}</label>
+                    <label>${file.split('/').pop()}</label>
                     <button id="btn-${index}" data-index="${index}">
                         Download
                         <span id="download-btn-${index}-loading-icon" class="spinner"></span>
