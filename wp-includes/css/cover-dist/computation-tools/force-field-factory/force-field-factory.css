@@ -54,3 +54,15 @@
 #user-info-div {
     margin-top: 20px;
 }
+
+/* 临时公告文字（FFF 源码暂不开放提示） */
+#download-modal .fff-notice-text {
+    margin: 0 0 8px 0;
+    line-height: 1.9;
+    color: #1e293b;
+    overflow-wrap: anywhere;
+}
+
+#download-modal .fff-notice-text a {
+    color: #3b82f6;
+}
