@@ -30,9 +30,9 @@ const requiredResource = "Force Field Factory";
 const NOTICE_ONLY = true;
 
 const FFF_NOTICE_HTML =
-    'ForceFieldFactory目前暂不开放源码，您可以向' +
+    'The source code of Force Field Factory is not available yet. You can send an email to ' +
     '<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>' +
-    '发送邮件进行请求。';
+    ' to request it.';
 
 function showNoticeModal() {
     const masking = document.getElementById('download-masking');
