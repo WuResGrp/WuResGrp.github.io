@@ -30,7 +30,7 @@ const requiredResource = "Force Field Factory";
 const NOTICE_ONLY = true;
 
 const FFF_NOTICE_HTML =
-    'The source code of Force Field Factory is not available on this website yet. You can send an email to ' +
+    'The source code of Force Field Factory is not available on this website. You can send an email to ' +
     '<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>' +
     ' to request it.';
 
