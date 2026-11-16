@@ -30,9 +30,9 @@ const requiredResource = "Force Field Factory";
 const NOTICE_ONLY = true;
 
 const FFF_NOTICE_HTML =
-    'The source code of Force Field Factory is not available on this website. You can send an email to ' +
-    '<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>' +
-    ' to request it.';
+    'Force Field Factory is available from Prof. Wu ' +
+    '(<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>)' +
+    ' upon request.';
 
 function showNoticeModal() {
     const masking = document.getElementById('download-masking');
