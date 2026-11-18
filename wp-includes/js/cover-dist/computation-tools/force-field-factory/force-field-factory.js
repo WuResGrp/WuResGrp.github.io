@@ -26,7 +26,7 @@ const requiredResource = "Force Field Factory";
    【用途】如需再次临时关闭 FFF 下载（例如源码暂不开放），把 NOTICE_ONLY 改回 true，
    点击 Download 即弹出提示弹窗（文案见 FFF_NOTICE_HTML），跳过登录/授权/下载流程。
    恢复正常下载：改回 false。 */
-const NOTICE_ONLY = false;
+const NOTICE_ONLY = true;
 
 const FFF_NOTICE_HTML =
     'The source code of Force Field Factory is not available on this website. You can send an email to ' +
