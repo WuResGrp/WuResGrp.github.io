@@ -9,8 +9,8 @@ const supabase = createClient(
 import { downloadMasking } from"../download.js"
 
 const fileNames = [
-    "Force Field Factory/force_field_factory_1.0.tar.gz",
-    "Force Field Factory/manual_force_field_factory_v1.0.pdf",
+    "Force Field Factory/FFF_2.0.tar",
+    "Force Field Factory/Force Field Factory V2.0 Manual.pdf",
 ];
 
 const commentLabels = [
@@ -22,17 +22,16 @@ const commentLabels = [
 /* 本页面全部文件归属的资源名称；下载前按用户 metadata 中批准的 resources 校验 */
 const requiredResource = "Force Field Factory";
 
-/* ==================== 临时公告模式（FFF 源码暂不开放） ====================
-   点击 Download 不再走登录/授权/下载流程，改为弹出提示弹窗。
-   【恢复方法】把下方 NOTICE_ONLY 改回 false 即可恢复原有
-   “登录 → accessed_resources 校验 → 下载弹窗”流程，原逻辑全部保留未删。
-   （如需连提示弹窗代码一起清除，git 历史中有未加公告前的完整版本。） */
-const NOTICE_ONLY = true;
+/* ==================== 临时公告模式（默认关闭） ====================
+   【用途】如需再次临时关闭 FFF 下载（例如源码暂不开放），把 NOTICE_ONLY 改回 true，
+   点击 Download 即弹出提示弹窗（文案见 FFF_NOTICE_HTML），跳过登录/授权/下载流程。
+   恢复正常下载：改回 false。 */
+const NOTICE_ONLY = false;
 
 const FFF_NOTICE_HTML =
-    'Force Field Factory is available from Prof. Wu ' +
-    '(<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>)' +
-    ' upon request.';
+    'The source code of Force Field Factory is not available on this website. You can send an email to ' +
+    '<a href="mailto:xpwu@ecust.edu.cn">xpwu@ecust.edu.cn</a>' +
+    ' to request it.';
 
 function showNoticeModal() {
     const masking = document.getElementById('download-masking');
