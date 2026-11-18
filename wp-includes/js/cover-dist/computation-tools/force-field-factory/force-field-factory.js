@@ -22,10 +22,10 @@ const commentLabels = [
 /* 本页面全部文件归属的资源名称；下载前按用户 metadata 中批准的 resources 校验 */
 const requiredResource = "Force Field Factory";
 
-/* ==================== 临时公告模式（默认关闭） ====================
-   【用途】如需再次临时关闭 FFF 下载（例如源码暂不开放），把 NOTICE_ONLY 改回 true，
-   点击 Download 即弹出提示弹窗（文案见 FFF_NOTICE_HTML），跳过登录/授权/下载流程。
-   恢复正常下载：改回 false。 */
+/* ==================== 临时公告模式（FFF 源码暂不开放） ====================
+   已登录用户点击 Download 显示提示弹窗（不进入下载流程）；未登录用户仍跳转登录页。
+   【恢复方法】把下方 NOTICE_ONLY 改回 false 即可恢复原有
+   “登录 → accessed_resources 校验 → 下载弹窗”流程，原逻辑全部保留未删。 */
 const NOTICE_ONLY = true;
 
 const FFF_NOTICE_HTML =
@@ -55,18 +55,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     const downloadBtn = document.getElementById('FFF-download');
 
     downloadBtn.addEventListener('click', async () => {
-        // 临时公告模式：FFF 源码暂不开放（恢复方法见 NOTICE_ONLY 定义处注释）
-        if (NOTICE_ONLY) {
-            showNoticeModal();
-            return;
-        }
-
         // getUser() 实时读取服务端用户资料，管理员授权后无需重新登录即可生效
         const { data: { user } } = await supabase.auth.getUser();
 
         if (!user) {
             sessionStorage.setItem("post_login_next", window.location.href);
             window.location.href = '/login/';
+            return;
+        }
+
+        // 临时公告模式：FFF 源码暂不开放，登录用户点击显示提示弹窗（恢复方法见 NOTICE_ONLY 定义处注释）
+        if (NOTICE_ONLY) {
+            showNoticeModal();
             return;
         }
 
